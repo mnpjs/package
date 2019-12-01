@@ -1,4 +1,3 @@
-/* alanode example/ */
 import myNewPackage from '../src'
 
 (async () => {

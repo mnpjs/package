@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"compile/mnp.js",
+"lineCount":1,
+"mappings":"A,aAGAA,MAAAC,QAAA,CAAiB,CACf,cCAaC,cAA2B,CAACC,CAAA,CAAS,EAAV,CAAc,CACtD,MAAM,CACJ,UAAAC,CAAA,CAAY,CAAA,CADR,CAEJ,KAAAC,CAFI,CAAA,CAGFF,CACJ,IAAKC,CAAL,CAEA,MADAE,QAAAC,IAAA,CAAY,+BAAZ,CAA6CF,CAA7C,CACOA,CAAAA,CAP+C,CDDvC;",
+"sources":["src/depack.js","src/index.js"],
+"sourcesContent":["import '../types/externs'\nimport myNewPackage from './'\n\nmodule.exports = {\n  '_myNewPackage': myNewPackage,\n}","/**\n * {{ description }}\n * @param {!_myNewPackage.Config} [config] Options for the program.\n */\nexport default async function myNewPackage(config = {}) {\n  const {\n    shouldRun = true,\n    text,\n  } = config\n  if (!shouldRun) return\n  console.log('my-new-package called with %s', text)\n  return text\n}\n\n/**\n * @typedef {import('..').Config} _myNewPackage.Config\n */\n"],
+"names":["module","exports","myNewPackage","config","shouldRun","text","console","log"]
+}

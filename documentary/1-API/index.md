@@ -8,16 +8,9 @@ import myNewPackage from 'my-new-package'
 
 %~%
 
-```## myNewPackage
-[
-  ["arg1", "string"],
-  ["arg2?", "boolean"]
-]
-```
+<typedef method="myNewPackage">types/api.xml</typedef>
 
-Call this function to get the result you want.
-
-%TYPEDEF types/index.xml%
+<typedef>types/index.xml</typedef>
 
 %EXAMPLE: example, ../src => my-new-package%
 %FORK example%

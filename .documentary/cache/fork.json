@@ -1,0 +1,6 @@
+{
+  "[eb303622aed40ceeddf79c6a66e6bf00] example": {
+    "stdout": "my-new-package called with example\nexample\n",
+    "stderr": ""
+  }
+}
