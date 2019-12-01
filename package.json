@@ -23,12 +23,16 @@
     "externs": "typal types/externs.js",
     "args": "argufy -o src/bin/get-args.js"
   },
-  "bin": "compile/bin/myNewPackage.js",
+  "bin": {
+    "mnp": "compile/bin/myNewPackage.js",
+    "mnp-dev": "src/bin/index.js"
+  },
   "files": [
     "build",
     "src",
     "compile",
-    "types/externs.js"
+    "types/externs.js",
+    "src/bin/index.js"
   ],
   "externs": "types/externs.js",
   "repository": {
