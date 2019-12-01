@@ -1,0 +1,48 @@
+{
+  "name": "my-new-package",
+  "version": "0.0.0-pre",
+  "description": "{{ description }}",
+  "main": "build/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "t": "zoroaster -a",
+    "test": "yarn t test/spec test/mask",
+    "spec": "yarn t test/spec",
+    "mask": "yarn t test/mask",
+    "test-build": "ALAMODE_ENV=test-build yarn test",
+    "lint": "eslint .",
+    "doc": "NODE_DEBUG=doc doc -o README.md",
+    "b": "alamode src -o build -s",
+    "d": "yarn-s d1 externs",
+    "d1": "typal types/index.js src -c -t types/index.xml",
+    "externs": "typal types/externs.js",
+    "build": "yarn-s d b doc",
+    "e": "alanode"
+  },
+  "files": [
+    "build",
+    "src",
+    "types/externs.js"
+  ],
+  "externs": "types/externs.js",
+  "repository": {
+    "type": "git",
+    "url": "{{ git_url }}"
+  },
+  "keywords": [
+    "{{ keywords }}"
+  ],
+  "author": "{{ author_name }} <{{ author_email }}>",
+  "license": "MIT",
+  "bugs": {
+    "url": "{{ issues_url }}"
+  },
+  "homepage": "{{ readme_url }}",
+  "devDependencies": {
+    "alamode": "^3.2.0",
+    "documentary": "^1.34.1",
+    "eslint-config-artdeco": "1.0.1",
+    "yarn-s": "1.1.0",
+    "zoroaster": "^4.1.2"
+  }
+}
