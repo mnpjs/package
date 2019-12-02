@@ -1,3 +1,4 @@
+const { c } = require('../stdlib');
 /**
  * {{ description }}
  * @param {!_myNewPackage.Config} [config] Options for the program.
@@ -8,9 +9,11 @@ async function myNewPackage(config = {}) {
     text,
   } = config
   if (!shouldRun) return
-  console.log('my-new-package called with %s', text)
+  console.log('my-new-package called with %s', c(text, 'yellow'))
   return text
 }
+
+/* typal types/index.xml */
 
 /**
  * @typedef {import('..').Config} _myNewPackage.Config

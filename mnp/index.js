@@ -17,7 +17,7 @@ to create the first page and press enter when done.`)
     binary: {
       confirm: true,
       text: 'With binary',
-      async afterQuestions({ removeFiles, removePackages, updateFiles }, withBinary ) {
+      async afterQuestions({ removeFiles, removePackages, updateFiles, packageJson, updatePackageJson }, withBinary ) {
         if (withBinary) return
         removeFiles('src/bin')
         removeFiles('build/bin')
@@ -29,26 +29,78 @@ to create the first page and press enter when done.`)
           re: /## CLI[\s\S]+#/,
           replacement: '#',
         }, { file: 'README.md' })
-        await removePackages(['erte', 'indicatrix', 'usually', 'argufy'])
+        await removePackages(['indicatrix', 'usually', 'argufy'])
+        delete packageJson.bin
+        updatePackageJson(packageJson)
       },
     },
-    // compile: {
-    //   text: 'Build or compile',
-    //   getDefault() { return 'compile' },
-    //   async afterQuestions({}, answer) {
-    //     const compile = answer == 'compile'
-    //     const build = answer == 'build'
-    //     if (compile) {
-
-    //     }
-    //   },
-    // },
+    compile: {
+      text: 'Build or compile',
+      getDefault() { return 'compile' },
+      async afterQuestions({ removeFiles, packageJson, udpatePackageJson, updateFiles, json, saveJson }, answer) {
+        const compile = answer == 'compile'
+        const build = answer == 'build'
+        const { scripts } = packageJson
+        const alamoderc = json('.alamoderc.json')
+        if (compile) {
+          removeFiles('build/bin')
+          delete scripts['test-build']
+          await updateFiles({
+            re: /\/\* typal types\/index.xml \*\/\n/,
+            replacement: '',
+          }, { file: 'src/index.js' })
+          delete alamoderc.env['test-build']
+          delete alamoderc.import // remove stdlib
+          packageJson.files = packageJson.files.filter((a) => {
+            return !['build', 'stdlib'].includes(a)
+          })
+        } else if (build) {
+          removeCompile(alamoderc, scripts, packageJson)
+          removeFiles('compile')
+          removeFiles('src/depack.js')
+          await updateFiles({
+            re: /\/\*\*\n \* @typedef[\s\S]+/,
+            replacement: '',
+          }, { file: 'src/index.js' })
+        }
+        packageJson.scripts = scripts
+        udpatePackageJson(packageJson)
+        saveJson('.alamoderc.json', alamoderc)
+      },
+    },
   },
-  async afterInit({ renameFile, name, initManager }) {
-    renameFile('src/bin/mnp.js', `src/bin/${name}.js`)
+  async preUpdate(sets, { github, updateFiles }) {
+    const { org } = sets
+    const { body } = await github._request(`/orgs/${org}`)
+    if (body) {
+      const { avatar_url } = body
+      sets.avatar_url = avatar_url
+      await updateFiles({
+        re: 'https://avatars3.githubusercontent.com/u/38815725',
+        replacement: avatar_url,
+      }, { file: './documentary/index.jsx' })
+    }
+  },
+  async afterInit({ name }, { renameFile, initManager }) {
     renameFile('compile/bin/mnp.js', `compile/bin/${name}.js`)
     renameFile('compile/mnp.js', `compile/${name}.js`)
     renameFile('compile/mnp.js.map', `compile/${name}.js.map`)
+    renameFile('src/bin/mnp.js', `src/bin/${name}.js`)
+    renameFile('build/bin/mnp.js', `build/bin/${name}.js`)
     await initManager()
   },
+}
+
+const removeCompile = async (alamoderc, scripts, packageJson) => {
+  delete alamoderc.env['test-compile']
+  delete alamoderc.import
+  delete scripts.template
+  scripts.d1 = 'typal src/index.js -c -t types/index.xml'
+  delete scripts['test-compile']
+  delete scripts['compile']
+  delete scripts['lib']
+  packageJson.main = 'build/index.js'
+  packageJson.files = packageJson.files.filter((a) => {
+    return a != 'compile'
+  })
 }

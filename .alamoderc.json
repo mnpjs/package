@@ -20,7 +20,7 @@
   "import": {
     "stdlib": {
       "path": "stdlib",
-      "packages": []
+      "packages": ["erte"]
     }
   }
 }

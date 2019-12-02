@@ -2,7 +2,7 @@ const { _help, _init, _output, _version, _input, argsConfig } = require('./get-a
 const { reduceUsage } = require('argufy');
 let usually = require('usually'); if (usually && usually.__esModule) usually = usually.default;
 const { readFileSync, writeFileSync } = require('fs');
-const { c } = require('erte');
+const { c } = require('../../stdlib');
 const Init = require('./commands/init');
 const myNewPackage = require('../');
 
