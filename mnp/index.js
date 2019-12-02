@@ -22,9 +22,9 @@ to create the first page and press enter when done.`)
         await rm('src/bin')
         await rm('build/bin')
         removeFile('test/mask/bin.js')
-        removeFile('test/result/bin')
+        await rm('test/result/bin')
         removeFile('types/arguments.xml')
-        removeFile('documentary/2-CLI')
+        await rm('documentary/2-CLI')
         await updateFiles({
           re: /## CLI[\s\S]+#/,
           replacement: '#',
