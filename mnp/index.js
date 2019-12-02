@@ -43,7 +43,7 @@ to create the first page and press enter when done.`)
         const { scripts } = packageJson
         const alamoderc = json('.alamoderc.json')
         if (compile) {
-          if (!binary) await rm('build/bin')
+          if (binary) await rm('build/bin')
           delete scripts['test-build']
           delete scripts['stdlib']
           delete scripts['b']
