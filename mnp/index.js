@@ -17,14 +17,14 @@ to create the first page and press enter when done.`)
     binary: {
       confirm: true,
       text: 'With binary',
-      async afterQuestions({ removeFiles, removePackages, updateFiles, packageJson, updatePackageJson }, withBinary ) {
+      async afterQuestions({ removeFile, removePackages, updateFiles, packageJson, updatePackageJson }, withBinary ) {
         if (withBinary) return
-        removeFiles('src/bin')
-        removeFiles('build/bin')
-        removeFiles('test/mask/bin.js')
-        removeFiles('test/result/bin')
-        removeFiles('types/arguments.xml')
-        removeFiles('documentary/2-CLI')
+        removeFile('src/bin')
+        removeFile('build/bin')
+        removeFile('test/mask/bin.js')
+        removeFile('test/result/bin')
+        removeFile('types/arguments.xml')
+        removeFile('documentary/2-CLI')
         await updateFiles({
           re: /## CLI[\s\S]+#/,
           replacement: '#',
