@@ -111,12 +111,16 @@ to create the first page and press enter when done.`)
   },
 }
 
+/**
+ * 1. Since building, move dev-deps to deps.
+ */
 const removeCompile = async (alamoderc, scripts, packageJson, bin) => {
   const { devDependencies, dependencies = {} } = packageJson
   const {
-    argufy, indicatrix, usually,
+    argufy, indicatrix, usually, erte, ...restDevDependencies
   } = devDependencies
   if (bin) Object.assign(dependencies, { argufy, indicatrix, usually })
+  Object.assign(dependencies, erte)
 
   if (!bin) alamoderc.env.build.alamodeModules = []
   delete alamoderc.env['test-compile']
@@ -131,6 +135,6 @@ const removeCompile = async (alamoderc, scripts, packageJson, bin) => {
     return a != 'compile'
   })
   Object.assign(packageJson, {
-    devDependencies, dependencies,
+    devDependencies: restDevDependencies, dependencies,
   })
 }
