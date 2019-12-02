@@ -54,6 +54,8 @@ to create the first page and press enter when done.`)
         const compile = answer == 'compile'
         const build = answer == 'build'
         const { scripts } = packageJson
+        delete scripts.d2 // manually run on the build
+        // this should be reconsiled with @methodType regex in Typal on source
         const alamoderc = json('.alamoderc.json')
         if (compile) {
           await rm('build')
