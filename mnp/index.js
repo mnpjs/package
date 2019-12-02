@@ -124,10 +124,9 @@ const removeCompile = async (alamoderc, scripts, packageJson, bin) => {
   const {
     argufy, indicatrix, usually, erte, ...restDevDependencies
   } = devDependencies
-  if (bin) Object.assign(dependencies, { argufy, indicatrix, usually })
-  Object.assign(dependencies, { erte })
+  if (bin) Object.assign(dependencies, { erte, argufy, indicatrix, usually })
 
-  if (!bin) alamoderc.env.build.alamodeModules = []
+  if (!bin) alamoderc.env.build.import.alamodeModules = ['erte']
   delete alamoderc.env['test-compile']
   delete alamoderc.import
   delete scripts.template

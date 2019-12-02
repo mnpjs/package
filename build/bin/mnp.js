@@ -1,6 +1,6 @@
 const { _help, _init, _output, _version, _input, argsConfig } = require('./get-args');
 const { reduceUsage } = require('argufy');
-let usually = require('usually'); if (usually && usually.__esModule) usually = usually.default;
+const usually = require('usually');
 const { readFileSync, writeFileSync } = require('fs');
 const { c } = require('../../stdlib');
 const Init = require('./commands/init');

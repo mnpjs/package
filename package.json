@@ -20,7 +20,7 @@
     "b": "ALAMODE_ENV=build alamode src -o build -i stdlib.js -s",
     "d": "yarn-s template d1 externs",
     "d1": "typal compile/index.js -u -t types/index.xml",
-    "d2": "typal build -u -t types/index.xml",
+    "d2": "typal src -u -t types/index.xml",
     "template": "typal compile/template.js -T compile/index.js -t types/api.xml",
     "externs": "typal types/externs.js",
     "args": "argufy -o src/bin/get-args.js"

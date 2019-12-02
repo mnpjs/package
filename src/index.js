@@ -3,6 +3,8 @@ import { c } from 'erte'
 /**
  * {{ description }}
  * @param {!_myNewPackage.Config} [config] Options for the program.
+ * @param {boolean} [config.shouldRun=true] A boolean option. Default `true`.
+ * @param {string} [config.text] A text to return.
  */
 export default async function myNewPackage(config = {}) {
   const {

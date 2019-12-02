@@ -22,7 +22,7 @@
           "path": "stdlib",
           "packages": ["erte"]
         },
-        "alamodeModules": ["argufy", "indicatrix", "usually"]
+        "alamodeModules": ["argufy", "indicatrix", "usually", "erte"]
       }
     }
   }

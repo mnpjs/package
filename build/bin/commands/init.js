@@ -1,4 +1,4 @@
-let indicatrix = require('indicatrix'); if (indicatrix && indicatrix.__esModule) indicatrix = indicatrix.default;
+const indicatrix = require('indicatrix');
 
 async function Init() {
   const p = new Promise(r => setTimeout(r, 2000))
