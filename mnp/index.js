@@ -122,9 +122,9 @@ to create the first page and press enter when done.`)
 const removeCompile = async (alamoderc, scripts, packageJson, bin) => {
   const { devDependencies, dependencies = {} } = packageJson
   const {
-    argufy, indicatrix, usually, erte, ...restDevDependencies
+    argufy, indicatrix, usually, ...restDevDependencies
   } = devDependencies
-  if (bin) Object.assign(dependencies, { erte, argufy, indicatrix, usually })
+  if (bin) Object.assign(dependencies, { argufy, indicatrix, usually })
 
   if (!bin) alamoderc.env.build.import.alamodeModules = ['erte']
   if (!bin) alamoderc.env.build.import.stdlib.packages = ['erte']
