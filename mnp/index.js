@@ -61,7 +61,7 @@ to create the first page and press enter when done.`)
           delete scripts['stdlib']
           delete scripts['b']
           await updateFiles({
-            re: /\/\* typal types\/index.xml \*\/\n\n/,
+            re: /\/\* typal types\/index.xml \*\/[\s\S]+?\*\/\n\n/,
             replacement: '',
           }, { file: 'src/index.js' })
           delete alamoderc.env['test-build']
@@ -119,7 +119,7 @@ const removeCompile = async (alamoderc, scripts, packageJson) => {
   delete alamoderc.env['test-compile']
   delete alamoderc.import
   delete scripts.template
-  scripts.d1 = 'typal src/index.js -c -t types/index.xml'
+  scripts.d1 = 'typal src/index.js -u -t types/index.xml'
   delete scripts['test-compile']
   delete scripts['compile']
   delete scripts['lib']
