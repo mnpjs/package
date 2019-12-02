@@ -34,6 +34,8 @@ to create the first page and press enter when done.`)
         delete devDependencies.usually
         delete devDependencies.argufy
 
+        delete packageJson.scripts.dev
+
         delete packageJson.bin
         packageJson.files = packageJson.files.filter((a) => {
           return !['src/bin/index.js'].includes(a)
