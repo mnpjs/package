@@ -65,7 +65,7 @@ to create the first page and press enter when done.`)
           await updateFiles({
             re: /if (process.env.ALAMODE_ENV == 'test-build') {[\s\S]+?} else /,
             replacement: '',
-          })
+          }, { file: 'test/context/index.js' })
         } else if (build) {
           removeCompile(alamoderc, scripts, packageJson)
           await rm('compile')
@@ -77,7 +77,7 @@ to create the first page and press enter when done.`)
           await updateFiles({
             re: / else if (process.env.ALAMODE_ENV == 'test-compile') {[\s\S]+?}/,
             replacement: '',
-          })
+          }, { file: 'test/context/index.js' })
         }
         packageJson.scripts = scripts
         updatePackageJson(packageJson)
