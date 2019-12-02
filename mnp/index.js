@@ -37,13 +37,13 @@ to create the first page and press enter when done.`)
     compile: {
       text: 'Build or compile',
       getDefault() { return 'compile' },
-      async afterQuestions({ rm, removeFile, packageJson, updatePackageJson, updateFiles, json, saveJson }, answer) {
+      async afterQuestions({ rm, removeFile, packageJson, updatePackageJson, updateFiles, json, saveJson }, answer, { binary }) {
         const compile = answer == 'compile'
         const build = answer == 'build'
         const { scripts } = packageJson
         const alamoderc = json('.alamoderc.json')
         if (compile) {
-          await rm('build/bin')
+          if (!binary) await rm('build/bin')
           delete scripts['test-build']
           delete scripts['stdlib']
           delete scripts['b']
