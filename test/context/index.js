@@ -34,13 +34,11 @@ export default class Context {
   }
 }
 
-let BIN
+let BIN = 'src/BIN'
 if (process.env.ALAMODE_ENV == 'test-build') {
   console.log('Testing build bin...')
   BIN = 'build/bin/mnp'
-} if (process.env.ALAMODE_ENV == 'test-compile') {
+} else if (process.env.ALAMODE_ENV == 'test-compile') {
   console.log('Testing compile bin...')
   BIN = 'compile/bin/mnp'
-} else {
-  BIN = 'src/bin'
 }

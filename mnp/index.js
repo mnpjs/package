@@ -33,6 +33,11 @@ to create the first page and press enter when done.`)
         await removePackages(['indicatrix', 'usually', 'argufy'])
         delete packageJson.bin
         updatePackageJson(packageJson)
+
+        await updateFiles({
+          re: /\nlet BIN[\s\S]+/,
+          replacement: '',
+        }, { file: 'test/context/index.js' })
       },
     },
     compile: {
@@ -57,6 +62,10 @@ to create the first page and press enter when done.`)
           packageJson.files = packageJson.files.filter((a) => {
             return !['build', 'stdlib'].includes(a)
           })
+          await updateFiles({
+            re: /if (process.env.ALAMODE_ENV == 'test-build') {[\s\S]+?} else /,
+            replacement: '',
+          })
         } else if (build) {
           removeCompile(alamoderc, scripts, packageJson)
           await rm('compile')
@@ -65,6 +74,10 @@ to create the first page and press enter when done.`)
             re: /\/\*\*\n \* @typedef[\s\S]+/,
             replacement: '',
           }, { file: 'src/index.js' })
+          await updateFiles({
+            re: / else if (process.env.ALAMODE_ENV == 'test-compile') {[\s\S]+?}/,
+            replacement: '',
+          })
         }
         packageJson.scripts = scripts
         updatePackageJson(packageJson)
