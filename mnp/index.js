@@ -43,7 +43,7 @@ to create the first page and press enter when done.`)
           replacement: '',
         }, { file: 'test/context/index.js' })
         await updateFiles({
-          re: /\s+static get BIN\(\) {[\s\S]+}\n/,
+          re: /\s+static get BIN\(\) {[\s\S]+?}\n/,
           replacement: '',
         }, { file: 'test/context/index.js' })
       },

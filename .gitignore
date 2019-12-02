@@ -58,3 +58,7 @@ typings/
 .env
 
 .documentary/cache
+
+# start template
+.gitmodules
+# end template
