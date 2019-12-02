@@ -71,7 +71,7 @@ to create the first page and press enter when done.`)
   },
   async preUpdate(sets, { github, updateFiles }) {
     const { org } = sets
-    const { body } = await github._request(`/orgs/${org}`)
+    const { body } = await github._request({ endpoint: `/orgs/${org}` })
     if (body) {
       const { avatar_url } = body
       sets.avatar_url = avatar_url
