@@ -45,12 +45,14 @@ to create the first page and press enter when done.`)
         if (compile) {
           await rm('build/bin')
           delete scripts['test-build']
+          delete scripts['stdlib']
+          delete scripts['b']
           await updateFiles({
-            re: /\/\* typal types\/index.xml \*\/\n/,
+            re: /\/\* typal types\/index.xml \*\/\n\n/,
             replacement: '',
           }, { file: 'src/index.js' })
           delete alamoderc.env['test-build']
-          delete alamoderc.import // remove stdlib
+          delete alamoderc.env['build'] // remove stdlib
           packageJson.files = packageJson.files.filter((a) => {
             return !['build', 'stdlib'].includes(a)
           })
