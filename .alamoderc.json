@@ -21,7 +21,8 @@
         "stdlib": {
           "path": "stdlib",
           "packages": ["erte"]
-        }
+        },
+        "alamodeModules": ["argufy", "indicatrix", "usually"]
       }
     }
   }

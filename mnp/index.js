@@ -50,7 +50,7 @@ to create the first page and press enter when done.`)
     compile: {
       text: 'Build or compile',
       getDefault() { return 'compile' },
-      async afterQuestions({ rm, removeFile, packageJson, updatePackageJson, updateFiles, json, saveJson }, answer) {
+      async afterQuestions({ rm, removeFile, packageJson, updatePackageJson, updateFiles, json, saveJson }, answer, { binary }) {
         const compile = answer == 'compile'
         const build = answer == 'build'
         const { scripts } = packageJson
@@ -70,7 +70,7 @@ to create the first page and press enter when done.`)
             replacement: '',
           }, { file: 'test/context/index.js' })
         } else if (build) {
-          removeCompile(alamoderc, scripts, packageJson)
+          removeCompile(alamoderc, scripts, packageJson, binary)
           await rm('compile')
           removeFile('src/depack.js')
           removeFile('build/depack.js')
@@ -111,7 +111,14 @@ to create the first page and press enter when done.`)
   },
 }
 
-const removeCompile = async (alamoderc, scripts, packageJson) => {
+const removeCompile = async (alamoderc, scripts, packageJson, bin) => {
+  const { devDependencies, dependencies = {} } = packageJson
+  const {
+    argufy, indicatrix, usually,
+  } = devDependencies
+  if (bin) Object.assign(dependencies, { argufy, indicatrix, usually })
+
+  if (!bin) alamoderc.env.build.alamodeModules = []
   delete alamoderc.env['test-compile']
   delete alamoderc.import
   delete scripts.template
@@ -122,5 +129,8 @@ const removeCompile = async (alamoderc, scripts, packageJson) => {
   packageJson.main = 'build/index.js'
   packageJson.files = packageJson.files.filter((a) => {
     return a != 'compile'
+  })
+  Object.assign(packageJson, {
+    devDependencies, dependencies,
   })
 }

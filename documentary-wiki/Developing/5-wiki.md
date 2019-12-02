@@ -5,3 +5,5 @@ The wiki submodule has been created for convenient access to the wiki git. The d
 ```sh
 yarn wiki -p 'commit message'
 ```
+
+%~%
