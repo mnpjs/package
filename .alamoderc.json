@@ -20,7 +20,7 @@
       "import": {
         "stdlib": {
           "path": "stdlib",
-          "packages": ["erte"]
+          "packages": ["argufy", "indicatrix", "usually", "erte"]
         },
         "alamodeModules": ["argufy", "indicatrix", "usually", "erte"]
       }
