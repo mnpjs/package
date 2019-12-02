@@ -77,10 +77,11 @@ to create the first page and press enter when done.`)
           removeCompile(alamoderc, scripts, packageJson)
           await rm('compile')
           removeFile('src/depack.js')
+          removeFile('build/depack.js')
           await updateFiles({
-            re: /\/\*\*\n \* @typedef[\s\S]+/,
+            re: /\/\*\*\n \* @typedef[\s\S]+?\*\/(\n|$)/,
             replacement: '',
-          }, { file: 'src/index.js' })
+          }, { files: ['src/index.js', 'build/index.js'] })
           await updateFiles({
             re: / else if (process.env.ALAMODE_ENV == 'test-compile') {[\s\S]+?}/,
             replacement: '',
