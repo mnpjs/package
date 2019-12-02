@@ -79,7 +79,7 @@ to create the first page and press enter when done.`)
           removeFile('src/depack.js')
           removeFile('build/depack.js')
           await updateFiles({
-            re: /\/\*\*\n \* @typedef [\s\S]+?\*\/(\n|$)/g,
+            re: /\/\*\*\n \* @typedef {import[\s\S]+?\*\/(\n|$)/g,
             replacement: '',
           }, { files: ['src/index.js', 'build/index.js'] })
           await updateFiles({
