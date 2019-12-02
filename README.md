@@ -130,7 +130,10 @@ The package can also be used from the CLI.
 {{ license_name }}
 
 <table>
-  <tr><td><img src="https://avatars3.githubusercontent.com/u/38815725?s=100" alt="{{ org }}"></td><td>© <a href="{{ website }}">{{ trademark }}</a> 2019</td></tr>
+  <tr>
+    <td><img src="https://avatars3.githubusercontent.com/u/38815725?v=4&amp;s=100" alt="{{ org }}"></td>
+    <td>© <a href="{{ website }}">{{ trademark }}</a> 2019</td>
+  </tr>
 </table>
 
 <p align="center"><a href="#table-of-contents">

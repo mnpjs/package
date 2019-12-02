@@ -3,7 +3,8 @@ export default {
     'wiki': {
       text: 'Init Github Wiki',
       confirm: true,
-      async afterQuestions({ confirm, spawn }, answer, { name, org }) {
+      async afterQuestions({ confirm, spawn, removeFile }, answer, { name, org }) {
+        removeFile('.gitmodules')
         if (answer) {
           const a = await confirm(`Please go to https://github.com/${org}/${name}/wiki/_new
 to create the first page and press enter when done.`)
@@ -37,13 +38,13 @@ to create the first page and press enter when done.`)
     compile: {
       text: 'Build or compile',
       getDefault() { return 'compile' },
-      async afterQuestions({ rm, removeFile, packageJson, updatePackageJson, updateFiles, json, saveJson }, answer, { binary }) {
+      async afterQuestions({ rm, removeFile, packageJson, updatePackageJson, updateFiles, json, saveJson }, answer) {
         const compile = answer == 'compile'
         const build = answer == 'build'
         const { scripts } = packageJson
         const alamoderc = json('.alamoderc.json')
         if (compile) {
-          if (binary) await rm('build/bin')
+          await rm('build')
           delete scripts['test-build']
           delete scripts['stdlib']
           delete scripts['b']

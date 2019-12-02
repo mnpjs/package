@@ -1,4 +1,5 @@
 import { c } from 'erte'
+
 /**
  * {{ description }}
  * @param {!_myNewPackage.Config} [config] Options for the program.
@@ -6,7 +7,7 @@ import { c } from 'erte'
 export default async function myNewPackage(config = {}) {
   const {
     shouldRun = true,
-    text,
+    text = '',
   } = config
   if (!shouldRun) return
   console.log('my-new-package called with %s', c(text, 'yellow'))

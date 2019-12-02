@@ -1,4 +1,5 @@
 const { c } = require('../stdlib');
+
 /**
  * {{ description }}
  * @param {!_myNewPackage.Config} [config] Options for the program.
