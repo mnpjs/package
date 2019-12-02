@@ -1,4 +1,4 @@
-const { _myNewPackage } = require('./my-new-package')
+const { _myNewPackage } = require('./mnp')
 
 /**
  * {{ description }}

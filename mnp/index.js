@@ -26,8 +26,8 @@ to create the first page and press enter when done.`)
         removeFile('types/arguments.xml')
         await rm('documentary/2-CLI')
         await updateFiles({
-          re: /## CLI[\s\S]+?#/,
-          replacement: '#',
+          re: /## CLI[\s\S]+?##/,
+          replacement: '##',
         }, { file: 'README.md' })
         const { devDependencies } = packageJson
         delete devDependencies.indicatrix
@@ -60,14 +60,10 @@ to create the first page and press enter when done.`)
           delete scripts['test-build']
           delete scripts['stdlib']
           delete scripts['b']
-          await updateFiles({
-            re: /\/\* typal types\/index.xml \*\/[\s\S]+?\*\/\n\n/,
-            replacement: '',
-          }, { file: 'src/index.js' })
           delete alamoderc.env['test-build']
           delete alamoderc.env['build'] // remove stdlib
           packageJson.files = packageJson.files.filter((a) => {
-            return !['build', 'stdlib'].includes(a)
+            return !['build', 'stdlib', 'types/index.js'].includes(a)
           })
           await updateFiles({
             re: /if (process.env.ALAMODE_ENV == 'test-build') {[\s\S]+?} else /,
@@ -79,8 +75,8 @@ to create the first page and press enter when done.`)
           removeFile('src/depack.js')
           removeFile('build/depack.js')
           await updateFiles({
-            re: /\/\*\*\n \* @typedef {import[\s\S]+?\*\/(\n|$)/g,
-            replacement: '',
+            re: '@typedef {import(\'../types\').Config}',
+            replacement: '@typedef {import(\'..\').Config}',
           }, { files: ['src/index.js', 'build/index.js'] })
           await updateFiles({
             re: / else if (process.env.ALAMODE_ENV == 'test-compile') {[\s\S]+?}/,
@@ -119,7 +115,7 @@ const removeCompile = async (alamoderc, scripts, packageJson) => {
   delete alamoderc.env['test-compile']
   delete alamoderc.import
   delete scripts.template
-  scripts.d1 = 'typal src/index.js -u -t types/index.xml'
+  scripts.d1 = 'typal types/index.js'
   delete scripts['test-compile']
   delete scripts['compile']
   delete scripts['lib']

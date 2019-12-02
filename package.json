@@ -34,6 +34,7 @@
     "compile",
     "stdlib",
     "types/externs.js",
+    "types/index.js",
     "src/bin/index.js"
   ],
   "externs": "types/externs.js",
