@@ -17,10 +17,10 @@ to create the first page and press enter when done.`)
     binary: {
       confirm: true,
       text: 'With binary',
-      async afterQuestions({ removeFile, removePackages, updateFiles, packageJson, updatePackageJson }, withBinary ) {
+      async afterQuestions({ rm, removeFile, removePackages, updateFiles, packageJson, updatePackageJson }, withBinary ) {
         if (withBinary) return
-        removeFile('src/bin')
-        removeFile('build/bin')
+        await rm('src/bin')
+        await rm('build/bin')
         removeFile('test/mask/bin.js')
         removeFile('test/result/bin')
         removeFile('types/arguments.xml')
@@ -37,13 +37,13 @@ to create the first page and press enter when done.`)
     compile: {
       text: 'Build or compile',
       getDefault() { return 'compile' },
-      async afterQuestions({ removeFiles, packageJson, udpatePackageJson, updateFiles, json, saveJson }, answer) {
+      async afterQuestions({ rm, removeFile, packageJson, udpatePackageJson, updateFiles, json, saveJson }, answer) {
         const compile = answer == 'compile'
         const build = answer == 'build'
         const { scripts } = packageJson
         const alamoderc = json('.alamoderc.json')
         if (compile) {
-          removeFiles('build/bin')
+          await rm('build/bin')
           delete scripts['test-build']
           await updateFiles({
             re: /\/\* typal types\/index.xml \*\/\n/,
@@ -56,8 +56,8 @@ to create the first page and press enter when done.`)
           })
         } else if (build) {
           removeCompile(alamoderc, scripts, packageJson)
-          removeFiles('compile')
-          removeFiles('src/depack.js')
+          await rm('compile')
+          removeFile('src/depack.js')
           await updateFiles({
             re: /\/\*\*\n \* @typedef[\s\S]+/,
             replacement: '',
