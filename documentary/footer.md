@@ -2,7 +2,9 @@
 
 - [ ] Add a new item to the todo list. -->
 
-## Copyright
+## Copyright & License
+
+{{ license_name }}
 
 <footer />
 

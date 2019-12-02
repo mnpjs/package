@@ -45,7 +45,7 @@
     "{{ keywords }}"
   ],
   "author": "{{ author_name }} <{{ author_email }}>",
-  "license": "MIT",
+  "license": "{{ license_spdx }}",
   "bugs": {
     "url": "{{ issues_url }}"
   },
