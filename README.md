@@ -15,7 +15,7 @@ yarn add my-new-package
 - [`async myNewPackage(config: !Config): string`](#async-mynewpackageconfig-config-string)
   * [`Config`](#type-config)
 - [CLI](#cli)
-- [Copyright](#copyright)
+- [Copyright & License](#copyright--license)
 
 <p align="center"><a href="#table-of-contents">
   <img src="/.documentary/section-breaks/0.svg?sanitize=true">
@@ -125,7 +125,9 @@ The package can also be used from the CLI.
   <img src="/.documentary/section-breaks/3.svg?sanitize=true">
 </a></p>
 
-## Copyright
+## Copyright & License
+
+{{ license_name }}
 
 <table>
   <tr><td><img src="https://avatars3.githubusercontent.com/u/38815725?s=100" alt="{{ org }}"></td><td>© <a href="{{ website }}">{{ trademark }}</a> 2019</td></tr>
