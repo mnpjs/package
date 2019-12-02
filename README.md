@@ -127,8 +127,9 @@ The package can also be used from the CLI.
 
 ## Copyright
 
-(c) [{{ trademark }}][1] {{ year }}
-
+<table>
+  <tr><td><img src="https://avatars3.githubusercontent.com/u/38815725?s=100" alt="{{ org }}"></td><td>&trade; [{{ trademark }}][1] {{ year }}</td></tr>
+</table>
 [1]: {{ website }}
 
 <p align="center"><a href="#table-of-contents">

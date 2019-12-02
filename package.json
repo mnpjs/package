@@ -11,7 +11,7 @@
     "mask": "yarn t test/mask",
     "compile": "depack src/bin/mnp -o compile/bin/mnp.js -a -c -S --externs types/externs.js",
     "lib": "depack src/depack.js -o compile/mnp.js -a -c --source_map_include_content",
-    "stdlib": "depack src/stdlib.js -o stdlib -a -c -p --source_map_include_content",
+    "stdlib": "depack src/stdlib.js -o stdlib/index.js -a -c -p --source_map_include_content",
     "test-build": "ALAMODE_ENV=test-build yarn test",
     "test-compile": "ALAMODE_ENV=test-compile yarn test",
     "lint": "eslint .",

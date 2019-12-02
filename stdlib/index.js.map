@@ -1,6 +1,6 @@
 {
 "version":3,
-"file":"stdlib/stdlib.js",
+"file":"stdlib/index.js",
 "lineCount":11,
 "mappings":"A;A;;;;;AAEA,MAAMA,IAAS,CACb,MAAS,EADI,EAEb,IAAO,EAFM,EAGb,MAAS,EAHI,EAIb,OAAU,EAJG,EAKb,KAAQ,EALK,EAMb,QAAW,EANE,EAOb,KAAQ,EAPK,EAQb,MAAS,EARI,EASb,KAAQ,EATK,CAAf;ACAAC,MAAAC,QAAA,GAAiB,CACf,ED2BKC,QAAU,CAACC,CAAD,EAASC,CAAT,CAAgB;AAE/B,SAAA,CADMC,CACN,GADWN,CAAA,CAAOK,CAAP,CACX,IACO,QAAQC,CAAR,IAAcF,CAAd,SADP,GAAgBA,CAAhB;AAF+B,CC5BhB,CAAjB;;",
 "sources":["node_modules/erte/src/index.js","src/stdlib.js"],

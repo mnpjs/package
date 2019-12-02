@@ -10,4 +10,4 @@ module.exports = {c:function(b, a) {
 }};
 
 
-//# sourceMappingURL=stdlib.js.map
+//# sourceMappingURL=index.js.map
