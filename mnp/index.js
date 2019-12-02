@@ -122,7 +122,7 @@ const removeCompile = async (alamoderc, scripts, packageJson, bin) => {
   delete alamoderc.env['test-compile']
   delete alamoderc.import
   delete scripts.template
-  scripts.d1 = 'typal types/index.js'
+  scripts.d1 = 'typal types/index.js src -u -t types/index.xml'
   delete scripts['test-compile']
   delete scripts['compile']
   delete scripts['lib']
