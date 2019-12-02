@@ -18,7 +18,7 @@ to create the first page and press enter when done.`)
     binary: {
       confirm: true,
       text: 'With binary',
-      async afterQuestions({ rm, removeFile, removePackages, updateFiles, packageJson, updatePackageJson }, withBinary ) {
+      async afterQuestions({ rm, removeFile, updateFiles, packageJson, updatePackageJson }, withBinary ) {
         if (withBinary) return
         await rm('src/bin')
         await rm('build/bin')
@@ -30,12 +30,20 @@ to create the first page and press enter when done.`)
           re: /## CLI[\s\S]+?#/,
           replacement: '#',
         }, { file: 'README.md' })
-        await removePackages(['indicatrix', 'usually', 'argufy'])
+        const { devDependencies } = packageJson
+        delete devDependencies.indicatrix
+        delete devDependencies.usually
+        delete devDependencies.argufy
+
         delete packageJson.bin
         updatePackageJson(packageJson)
 
         await updateFiles({
           re: /\nlet BIN[\s\S]+/,
+          replacement: '',
+        }, { file: 'test/context/index.js' })
+        await updateFiles({
+          re: /\s+static get BIN\(\) {[\s\S]+}\n/,
           replacement: '',
         }, { file: 'test/context/index.js' })
       },
