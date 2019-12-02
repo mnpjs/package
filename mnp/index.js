@@ -140,6 +140,7 @@ const removeCompile = async (alamoderc, scripts, packageJson, bin) => {
     return a != 'compile'
   })
   Object.assign(packageJson, {
-    devDependencies: restDevDependencies, dependencies,
+    devDependencies: restDevDependencies,
   })
+  if (Object.keys(dependencies).length) Object.assign(packageJson, { dependencies })
 }

@@ -1,4 +1,4 @@
-const indicatrix = require('indicatrix');
+const { indicatrix } = require('../../../stdlib');
 
 async function Init() {
   const p = new Promise(r => setTimeout(r, 2000))

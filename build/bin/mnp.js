@@ -1,6 +1,6 @@
 const { _help, _init, _output, _version, _input, argsConfig } = require('./get-args');
-const { reduceUsage } = require('argufy');
-const usually = require('usually');
+const { reduceUsage } = require('../../stdlib');
+const { usually } = require('../../stdlib');
 const { readFileSync, writeFileSync } = require('fs');
 const { c } = require('../../stdlib');
 const Init = require('./commands/init');

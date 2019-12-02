@@ -1,4 +1,4 @@
-const argufy = require('argufy');
+const { argufy } = require('../../stdlib');
 
 const argsConfig = {
   'input': {
