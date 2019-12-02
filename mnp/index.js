@@ -26,7 +26,7 @@ to create the first page and press enter when done.`)
         removeFile('types/arguments.xml')
         await rm('documentary/2-CLI')
         await updateFiles({
-          re: /## CLI[\s\S]+#/,
+          re: /## CLI[\s\S]+?#/,
           replacement: '#',
         }, { file: 'README.md' })
         await removePackages(['indicatrix', 'usually', 'argufy'])
