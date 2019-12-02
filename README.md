@@ -128,9 +128,8 @@ The package can also be used from the CLI.
 ## Copyright
 
 <table>
-  <tr><td><img src="https://avatars3.githubusercontent.com/u/38815725?s=100" alt="{{ org }}"></td><td>&trade; [{{ trademark }}][1] {{ year }}</td></tr>
+  <tr><td><img src="https://avatars3.githubusercontent.com/u/38815725?s=100" alt="{{ org }}"></td><td>© <a href="{{ website }}">{{ trademark }}</a> 2019</td></tr>
 </table>
-[1]: {{ website }}
 
 <p align="center"><a href="#table-of-contents">
   <img src="/.documentary/section-breaks/-1.svg?sanitize=true">
