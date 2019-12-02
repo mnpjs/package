@@ -78,7 +78,7 @@ to create the first page and press enter when done.`)
       await updateFiles({
         re: 'https://avatars3.githubusercontent.com/u/38815725?v=4',
         replacement: avatar_url,
-      }, { file: './documentary/index.jsx' })
+      }, { file: '.documentary/index.jsx' })
     }
   },
   async afterInit({ name }, { renameFile, initManager }) {
