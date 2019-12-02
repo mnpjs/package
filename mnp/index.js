@@ -3,8 +3,7 @@ export default {
     'wiki': {
       text: 'Init Github Wiki',
       confirm: true,
-      async afterQuestions({ confirm, spawn, removeFile }, answer, { name, org }) {
-        removeFile('.gitmodules')
+      async afterQuestions({ confirm, spawn }, answer, { name, org }) {
         if (answer) {
           const a = await confirm(`Please go to https://github.com/${org}/${name}/wiki/_new
 to create the first page and press enter when done.`)
