@@ -17,7 +17,7 @@
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc -o README.md -n _myNewPackage",
     "wiki": "NODE_DEBUG=doc doc documentary-wiki -W wiki -n _myNewPackage",
-    "b": "alamode src -o build -i stdlib.js -s",
+    "b": "ALAMODE_ENV=build alamode src -o build -i stdlib.js -s",
     "d": "yarn-s template d1 externs",
     "d1": "typal compile/index.js -u -t types/index.xml",
     "template": "typal compile/template.js -T compile/index.js -t types/api.xml",

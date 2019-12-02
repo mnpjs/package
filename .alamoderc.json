@@ -15,12 +15,14 @@
           "to": "$1compile"
         }
       }
-    }
-  },
-  "import": {
-    "stdlib": {
-      "path": "stdlib",
-      "packages": ["erte"]
+    },
+    "build": {
+      "import": {
+        "stdlib": {
+          "path": "stdlib",
+          "packages": ["erte"]
+        }
+      }
     }
   }
 }
