@@ -37,7 +37,7 @@ to create the first page and press enter when done.`)
     compile: {
       text: 'Build or compile',
       getDefault() { return 'compile' },
-      async afterQuestions({ rm, removeFile, packageJson, udpatePackageJson: updatePackageJson, updateFiles, json, saveJson }, answer) {
+      async afterQuestions({ rm, removeFile, packageJson, updatePackageJson, updateFiles, json, saveJson }, answer) {
         const compile = answer == 'compile'
         const build = answer == 'build'
         const { scripts } = packageJson
