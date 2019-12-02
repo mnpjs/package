@@ -76,7 +76,7 @@ to create the first page and press enter when done.`)
       const { avatar_url } = body
       sets.avatar_url = avatar_url
       await updateFiles({
-        re: 'https://avatars3.githubusercontent.com/u/38815725',
+        re: 'https://avatars3.githubusercontent.com/u/38815725?v=4',
         replacement: avatar_url,
       }, { file: './documentary/index.jsx' })
     }
