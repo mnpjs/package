@@ -83,17 +83,11 @@ export default {
       },
     },
   },
-  async preUpdate(sets, { github, updateFiles }) {
-    const { org } = sets
-    const { body } = await github._request({ endpoint: `/orgs/${org}` })
-    if (body) {
-      const { avatar_url } = body
-      sets.avatar_url = avatar_url
-      await updateFiles({
-        re: 'https://avatars3.githubusercontent.com/u/38815725?v=4',
-        replacement: avatar_url,
-      }, { file: '.documentary/index.jsx' })
-    }
+  async preUpdate({ repo: { organisation: { avatar_url } } }, { updateFiles }) {
+    await updateFiles({
+      re: 'https://avatars3.githubusercontent.com/u/38815725?v=4',
+      replacement: avatar_url,
+    }, { file: '.documentary/index.jsx' })
   },
   async afterInit({ name }, { renameFile, initManager }) {
     renameFile('compile/bin/mnp.js', `compile/bin/${name}.js`)
