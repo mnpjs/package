@@ -42,7 +42,7 @@
   "externs": "types/externs.js",
   "repository": {
     "type": "git",
-    "url": "{{ git_url }}"
+    "url": "{{ repo.git_url }}"
   },
   "keywords": [
     "{{ keywords }}"
@@ -50,9 +50,9 @@
   "author": "{{ author_name }} <{{ author_email }}>",
   "license": "{{ license_spdx }}",
   "bugs": {
-    "url": "{{ issues_url }}"
+    "url": "{{ repo.html_url }}/issues"
   },
-  "homepage": "{{ readme_url }}",
+  "homepage": "{{ homepage }}",
   "devDependencies": {
     "alamode": "^3.2.0",
     "argufy": "^1.7.1",
