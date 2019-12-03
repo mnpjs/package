@@ -83,7 +83,7 @@ export default {
       },
     },
   },
-  async preUpdate({ repo: { organisation: { avatar_url } } }, { updateFiles }) {
+  async preUpdate({ repo: { owner: { avatar_url } } }, { updateFiles }) {
     await updateFiles({
       re: 'https://avatars3.githubusercontent.com/u/38815725?v=4',
       replacement: avatar_url,
