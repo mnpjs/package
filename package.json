@@ -44,9 +44,7 @@
     "type": "git",
     "url": "{{ repo.git_url }}"
   },
-  "keywords": [
-    "{{ keywords }}"
-  ],
+  "keywords": [],
   "author": "{{ author_name }} <{{ author_email }}>",
   "license": "{{ license_spdx }}",
   "bugs": {

@@ -1,5 +1,5 @@
 export default {
-  mnpQuestions: ['wiki', 'license', 'homepage'],
+  mnpQuestions: ['wiki', 'license', 'homepage', 'keywords'],
   questions: {
     binary: {
       confirm: true,
