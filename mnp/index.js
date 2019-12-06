@@ -68,7 +68,7 @@ export default {
           }, { file: 'test/context/index.js' })
           // import types from compile/index.js
           await updateFiles({
-            re: /import('\.\.\/types')/g,
+            re: /import\('\.\.\/types'\)/g,
             replacement: 'import(\'..\')',
           }, { file: 'src/index.js' })
         } else if (build) {
