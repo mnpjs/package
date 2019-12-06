@@ -27,7 +27,7 @@
     "args": "argufy -o src/bin/get-args.js"
   },
   "bin": {
-    "mnp": "compile/bin/myNewPackage.js",
+    "mnp": "compile/bin/mnp.js",
     "mnp-dev": "src/bin/index.js"
   },
   "files": [
@@ -60,7 +60,7 @@
     "eslint-config-artdeco": "1.0.1",
     "indicatrix": "^1.4.0",
     "usually": "^1.2.0",
-    "yarn-s": "1.1.0",
+    "yarn-s": "1.2.0",
     "zoroaster": "^4.1.2"
   }
 }
