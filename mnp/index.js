@@ -51,6 +51,7 @@ export default {
         const alamoderc = json('.alamoderc.json')
         if (compile) {
           await rm('build')
+          await rm('stdlib')
           removeFile('src/stdlib.js')
           removeFile('types/index.js')
           delete scripts['test-build']
@@ -67,9 +68,9 @@ export default {
           }, { file: 'test/context/index.js' })
           // import types from compile/index.js
           await updateFiles({
-            re: '@typedef {import(\'../types\').Config}',
-            replacement: '@typedef {import(\'..\').Config}',
-          }, { files: ['src/index.js'] })
+            re: /import('\.\.\/types')/g,
+            replacement: 'import(\'..\')',
+          }, { file: 'src/index.js' })
         } else if (build) {
           removeCompile(alamoderc, scripts, packageJson, binary)
           await rm('compile')
