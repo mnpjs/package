@@ -7,11 +7,11 @@ const { _myNewPackage } = require('./mnp')
  * @param {string} [config.text] A text to return.
  * @return {Promise<string>}
  */
-function myNewPackge(config) {
+function myNewPackage(config) {
   return _myNewPackage(config)
 }
 
-module.exports = myNewPackge
+module.exports = myNewPackage
 
 /* typal types/index.xml namespace */
 /**
