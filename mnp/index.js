@@ -105,7 +105,7 @@ export default {
     renameFile('build/bin/mnp.js', `build/bin/${name}.js`)
     await initManager()
   },
-  async afterCommit() {
+  async afterCommit(_, { git }) {
     await git('tag', '-a', 'v0.0.0-pre', '-m', 'initialise package')
   }
 }
