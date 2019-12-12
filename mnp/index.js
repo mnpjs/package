@@ -22,6 +22,7 @@ export default {
         delete devDependencies.argufy
 
         delete packageJson.scripts.dev
+        delete packageJson.scripts.args
 
         delete packageJson.bin
         packageJson.files = packageJson.files.filter((a) => {
