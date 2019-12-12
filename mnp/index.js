@@ -97,12 +97,13 @@ export default {
       replacement: avatar_url,
     }, { file: '.documentary/index.jsx' })
   },
-  async afterInit({ name }, { renameFile, initManager }) {
+  async afterInit({ name }, { renameFile, initManager, git }) {
     renameFile('compile/bin/mnp.js', `compile/bin/${name}.js`)
     renameFile('compile/mnp.js', `compile/${name}.js`)
     renameFile('compile/mnp.js.map', `compile/${name}.js.map`)
     renameFile('src/bin/mnp.js', `src/bin/${name}.js`)
     renameFile('build/bin/mnp.js', `build/bin/${name}.js`)
+    await git('tag', '-a', 'v0.0.0-pre', '-m', 'initialise package')
     await initManager()
   },
 }
