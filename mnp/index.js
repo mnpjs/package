@@ -103,9 +103,11 @@ export default {
     renameFile('compile/mnp.js.map', `compile/${name}.js.map`)
     renameFile('src/bin/mnp.js', `src/bin/${name}.js`)
     renameFile('build/bin/mnp.js', `build/bin/${name}.js`)
-    await git('tag', '-a', 'v0.0.0-pre', '-m', 'initialise package')
     await initManager()
   },
+  async afterCommit() {
+    await git('tag', '-a', 'v0.0.0-pre', '-m', 'initialise package')
+  }
 }
 
 /**
