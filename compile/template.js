@@ -3,10 +3,10 @@ const { _myNewPackage } = require('./mnp')
 /**
  * @methodType {_myNewPackage.myNewPackage}
  */
-function myNewPackge(config) {
+function myNewPackage(config) {
   return _myNewPackage(config)
 }
 
-module.exports = myNewPackge
+module.exports = myNewPackage
 
 /* typal types/index.xml namespace */

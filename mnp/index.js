@@ -6,12 +6,15 @@ export default {
       text: 'With binary',
       async afterQuestions({ rm, removeFile, updateFiles, packageJson, updatePackageJson }, withBinary ) {
         if (withBinary) return
-        await rm('src/bin')
-        await rm('build/bin')
+        await Promise.all([
+          rm('src/bin'),
+          rm('build/bin'),
+          rm('compile/bin'),
+          rm('test/result/bin'),
+          rm('documentary/2-CLI'),
+        ])
         removeFile('test/mask/bin.js')
-        await rm('test/result/bin')
         removeFile('types/arguments.xml')
-        await rm('documentary/2-CLI')
         await updateFiles({
           re: /## CLI[\s\S]+?##/,
           replacement: '##',
