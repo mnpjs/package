@@ -17,7 +17,7 @@
     "test-compile": "ALAMODE_ENV=test-compile yarn test",
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc -o README.md -n _myNewPackage",
-    "wiki": "NODE_DEBUG=doc doc documentary-wiki -W wiki -n _myNewPackage",
+    "wiki": "NODE_DEBUG=doc doc wiki -W wiki.git -n _myNewPackage",
     "b": "ALAMODE_ENV=build alamode src -o build -i stdlib.js -s",
     "d": "yarn-s template d1 externs",
     "d1": "typal compile/index.js -u -t types/index.xml",
