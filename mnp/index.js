@@ -25,6 +25,7 @@ export default {
         delete devDependencies.argufy
 
         delete packageJson.scripts.dev
+        delete packageJson.scripts.compile
         delete packageJson.scripts.args
 
         delete packageJson.bin
