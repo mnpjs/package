@@ -16,8 +16,8 @@
     "test-build": "ALAMODE_ENV=test-build yarn test",
     "test-compile": "ALAMODE_ENV=test-compile yarn test",
     "lint": "eslint .",
-    "doc": "NODE_DEBUG=doc doc -o README.md -n _myNewPackage",
-    "wiki": "NODE_DEBUG=doc doc wiki -W wiki.git -n _myNewPackage",
+    "doc": "doc -o README.md -n _myNewPackage -a -d",
+    "wiki": "doc wiki -W wiki.git -n _myNewPackage -a -d",
     "b": "ALAMODE_ENV=build alamode src -o build -i stdlib.js -s",
     "d": "yarn-s template d1 externs",
     "d1": "typal compile/index.js -u -t types/index.xml",
@@ -37,7 +37,8 @@
     "stdlib",
     "types/externs.js",
     "types/index.js",
-    "src/bin/index.js"
+    "src/bin/index.js",
+    "typedefs.json"
   ],
   "externs": "types/externs.js",
   "repository": {
