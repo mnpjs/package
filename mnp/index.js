@@ -93,7 +93,9 @@ export default {
           // }, { file: 'src/index.js' })
         } else if (build) {
           await rm('src/index.js')
+          await rm('build/index.js')
           renameFile('src/index-build.js', 'src/index.js')
+          renameFile('build/index-build.js', 'build/index.js')
           removeCompile(alamoderc, scripts, packageJson, binary)
           await rm('compile')
           removeFile('src/depack.js')
