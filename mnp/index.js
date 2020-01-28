@@ -59,24 +59,23 @@ export default {
           await rm('stdlib')
           removeFile('src/index-build.js')
           removeFile('src/stdlib.js')
-          removeFile('types/index.js')
           delete scripts['test-build']
           delete scripts['stdlib']
           delete scripts['b']
           delete alamoderc.env['test-build']
           delete alamoderc.env['build'] // remove stdlib
           packageJson.files = packageJson.files.filter((a) => {
-            return !['build', 'stdlib', 'types/index.js'].includes(a)
+            return !['build', 'stdlib'].includes(a)
           })
           await updateFiles({
             re: /if (process.env.ALAMODE_ENV == 'test-build') {[\s\S]+?} else /,
             replacement: '',
           }, { file: 'test/context/index.js' })
           // import types from compile/index.js
-          await updateFiles({
-            re: /import\('\.\.\/types'\)/g,
-            replacement: 'import(\'..\')',
-          }, { file: 'src/index.js' })
+          // await updateFiles({
+          //   re: /import\('\.\.\/types'\)/g,
+          //   replacement: 'import(\'..\')',
+          // }, { file: 'src/index.js' })
         } else if (build) {
           await rm('src/index.js')
           renameFile('src/index-build.js', 'src/index.js')
@@ -97,11 +96,11 @@ export default {
   },
   async preUpdate({ repo: { owner: { avatar_url } } }, { updateFiles }) {
     await updateFiles({
-      re: 'https://avatars3.githubusercontent.com/u/38815725?v=4',
+      re: /https:\/\/avatars3.githubusercontent.com\/u\/38815725?v=4/,
       replacement: avatar_url,
     }, { file: '.documentary/index.jsx' })
   },
-  async afterInit({ name }, { renameFile, initManager, git }) {
+  async afterInit({ name }, { renameFile, initManager }) {
     renameFile('compile/bin/mnp.js', `compile/bin/${name}.js`)
     renameFile('compile/mnp.js', `compile/${name}.js`)
     renameFile('compile/mnp.js.map', `compile/${name}.js.map`)
@@ -111,7 +110,7 @@ export default {
   },
   async afterCommit(_, { git }) {
     await git('tag', '-a', 'v0.0.0-pre', '-m', 'initialise package')
-  }
+  },
 }
 
 /**
@@ -129,7 +128,7 @@ const removeCompile = async (alamoderc, scripts, packageJson, bin) => {
   delete alamoderc.env['test-compile']
   delete alamoderc.import
   delete scripts.template
-  scripts.d1 = 'typal types/index.js src -u -t types/index.xml'
+  scripts.d1 = 'typal src -u -t types/index.xml'
   delete scripts['test-compile']
   delete scripts['compile']
   delete scripts['lib']
