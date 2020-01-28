@@ -4,120 +4,134 @@
  BSD License
  Copyright (c) 2009-2015, Kevin Decker <kpdecker@gmail.com>
 */
-const t = {black:30, red:31, green:32, yellow:33, blue:34, magenta:35, cyan:36, white:37, grey:90};
-const u = (c, a, b, d = !1, e = !1) => {
-  const h = b ? new RegExp(`^-(${b}|-${a})`) : new RegExp(`^--${a}`);
-  a = c.findIndex(k => h.test(k));
-  if (-1 == a) {
-    return {argv:c};
+const w = {black:30, red:31, green:32, yellow:33, blue:34, magenta:35, cyan:36, white:37, grey:90};
+const x = (a, b, d, c = !1, h = !1) => {
+  const k = d ? new RegExp(`^-(${d}|-${b})$`) : new RegExp(`^--${b}$`);
+  b = a.findIndex(f => k.test(f));
+  if (-1 == b) {
+    return {argv:a};
   }
-  if (d) {
-    return {value:!0, argv:[...c.slice(0, a), ...c.slice(a + 1)]};
+  if (c) {
+    return {value:!0, index:b, length:1};
   }
-  d = a + 1;
-  b = c[d];
-  if (!b || "string" == typeof b && b.startsWith("--")) {
-    return {argv:c};
+  c = a[b + 1];
+  if (!c || "string" == typeof c && c.startsWith("--")) {
+    return {argv:a};
   }
-  e && (b = parseInt(b, 10));
-  return {value:b, argv:[...c.slice(0, a), ...c.slice(d + 1)]};
-}, v = c => {
-  const a = [];
-  for (let b = 0; b < c.length; b++) {
-    const d = c[b];
-    if (d.startsWith("-")) {
+  h && (c = parseInt(c, 10));
+  return {value:c, index:b, length:2};
+}, y = a => {
+  const b = [];
+  for (let d = 0; d < a.length; d++) {
+    const c = a[d];
+    if (c.startsWith("-")) {
       break;
     }
-    a.push(d);
+    b.push(c);
   }
-  return a;
+  return b;
 };
-module.exports = {c:function(c, a) {
-  return (a = t[a]) ? `\x1b[${a}m${c}\x1b[0m` : c;
-}, reduceUsage:c => Object.keys(c).reduce((a, b) => {
-  const d = c[b];
-  if ("string" == typeof d) {
-    return a[`-${d}`] = "", a;
+module.exports = {c:function(a, b) {
+  return (b = w[b]) ? `\x1b[${b}m${a}\x1b[0m` : a;
+}, reduceUsage:a => Object.keys(a).reduce((b, d) => {
+  const c = a[d];
+  if ("string" == typeof c) {
+    return b[`-${c}`] = "", b;
   }
-  b = d.command ? b : `--${b}`;
-  d.short && (b = `${b}, -${d.short}`);
-  let e = d.description;
-  d.default && (e = `${e}\nDefault: ${d.default}.`);
-  a[b] = e;
-  return a;
-}, {}), argufy:function(c = {}, a = process.argv) {
-  [, , ...a] = a;
-  const b = v(a);
-  a = a.slice(b.length);
-  let d = !b.length;
-  return Object.keys(c).reduce(({a:e, ...h}, k) => {
-    if (0 == e.length && d) {
-      return {a:e, ...h};
-    }
-    const m = c[k];
-    let n;
-    if ("string" == typeof m) {
-      ({value:n, argv:e} = u(e, k, m));
-    } else {
-      try {
-        const {short:f, boolean:g, number:l, command:p, multiple:q} = m;
-        p && q && b.length ? (n = b, d = !0) : p && b.length ? (n = b[0], d = !0) : {value:n, argv:e} = u(e, k, f, g, l);
-      } catch (f) {
-        return {a:e, ...h};
+  d = c.command ? d : `--${d}`;
+  c.short && (d = `${d}, -${c.short}`);
+  let h = c.description;
+  c.default && (h = `${h}\nDefault: ${c.default}.`);
+  b[d] = h;
+  return b;
+}, {}), argufy:function(a = {}, b = process.argv) {
+  let [, , ...d] = b;
+  const c = y(d);
+  d = d.slice(c.length);
+  a = Object.entries(a).reduce((f, [l, m]) => {
+    f[l] = "string" == typeof m ? {short:m} : m;
+    return f;
+  }, {});
+  const h = [];
+  a = Object.entries(a).reduce((f, [l, m]) => {
+    let e;
+    try {
+      const g = m.short, n = m.boolean, q = m.number, p = m.command, r = m.multiple;
+      if (p && r && c.length) {
+        e = c;
+      } else {
+        if (p && c.length) {
+          e = c[0];
+        } else {
+          const t = x(d, l, g, n, q);
+          ({value:e} = t);
+          const u = t.index, v = t.length;
+          void 0 !== u && v && h.push({index:u, length:v});
+        }
       }
+    } catch (g) {
+      return f;
     }
-    return void 0 === n ? {a:e, ...h} : {a:e, ...h, [k]:n};
-  }, {a});
-}, usually:function(c = {usage:{}}) {
-  const {usage:a = {}, description:b, line:d, example:e} = c;
-  c = Object.keys(a);
-  const h = Object.values(a), [k] = c.reduce(([f = 0, g = 0], l) => {
-    const p = a[l].split("\n").reduce((q, r) => r.length > q ? r.length : q, 0);
-    p > g && (g = p);
-    l.length > f && (f = l.length);
-    return [f, g];
-  }, []), m = (f, g) => {
-    g = " ".repeat(g - f.length);
-    return `${f}${g}`;
+    return void 0 === e ? f : {...f, [l]:e};
+  }, {});
+  let k = d;
+  h.forEach(({index:f, length:l}) => {
+    Array.from({length:l}).forEach((m, e) => {
+      k[f + e] = null;
+    });
+  });
+  k = k.filter(f => null !== f);
+  Object.assign(a, {a:k});
+  return a;
+}, usually:function(a = {usage:{}}) {
+  const {usage:b = {}, description:d, line:c, example:h} = a;
+  a = Object.keys(b);
+  const k = Object.values(b), [f] = a.reduce(([e = 0, g = 0], n) => {
+    const q = b[n].split("\n").reduce((p, r) => r.length > p ? r.length : p, 0);
+    q > g && (g = q);
+    n.length > e && (e = n.length);
+    return [e, g];
+  }, []), l = (e, g) => {
+    g = " ".repeat(g - e.length);
+    return `${e}${g}`;
   };
-  c = c.reduce((f, g, l) => {
-    l = h[l].split("\n");
-    g = m(g, k);
-    const [p, ...q] = l;
-    g = `${g}\t${p}`;
-    const r = m("", k);
-    l = q.map(w => `${r}\t${w}`);
-    return [...f, g, ...l];
-  }, []).map(f => `\t${f}`);
-  const n = [b, `  ${d || ""}`].filter(f => f ? f.trim() : f).join("\n\n");
-  c = `${n ? `${n}\n` : ""}
-${c.join("\n")}
+  a = a.reduce((e, g, n) => {
+    n = k[n].split("\n");
+    g = l(g, f);
+    const [q, ...p] = n;
+    g = `${g}\t${q}`;
+    const r = l("", f);
+    n = p.map(t => `${r}\t${t}`);
+    return [...e, g, ...n];
+  }, []).map(e => `\t${e}`);
+  const m = [d, `  ${c || ""}`].filter(e => e ? e.trim() : e).join("\n\n");
+  a = `${m ? `${m}\n` : ""}
+${a.join("\n")}
 `;
-  return e ? `${c}
+  return h ? `${a}
   Example:
 
-    ${e}
-` : c;
-}, indicatrix:async function(c, a, b = {}) {
-  const {interval:d = 250, writable:e = process.stdout} = b;
-  a = "function" == typeof a ? a() : a;
-  const h = e.write.bind(e);
-  ({INDICATRIX_PLACEHOLDER:b} = process.env);
-  if (b && "0" != b) {
-    return h(`${c}<INDICATRIX_PLACEHOLDER>`), await a;
+    ${h}
+` : a;
+}, indicatrix:async function(a, b, d = {}) {
+  const {interval:c = 250, writable:h = process.stdout} = d;
+  b = "function" == typeof b ? b() : b;
+  const k = h.write.bind(h);
+  if ((d = process.env.b) && "0" != d) {
+    return k(`${a}<INDICATRIX_PLACEHOLDER>`), await b;
   }
-  let k = 1, m = `${c}${".".repeat(k)}`;
-  h(m);
-  b = setInterval(() => {
-    k = (k + 1) % 4;
-    m = `${c}${".".repeat(k)}`;
-    h(`\r${" ".repeat(c.length + 3)}\r`);
-    h(m);
-  }, d);
+  let f = 1, l = `${a}${".".repeat(f)}`;
+  k(l);
+  d = setInterval(() => {
+    f = (f + 1) % 4;
+    l = `${a}${".".repeat(f)}`;
+    k(`\r${" ".repeat(a.length + 3)}\r`);
+    k(l);
+  }, c);
   try {
-    return await a;
+    return await b;
   } finally {
-    clearInterval(b), h(`\r${" ".repeat(c.length + 3)}\r`);
+    clearInterval(d), k(`\r${" ".repeat(a.length + 3)}\r`);
   }
 }};
 
