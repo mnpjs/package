@@ -21,3 +21,10 @@ _myNewPackage.Config.prototype.shouldRun
  * @type {string|undefined}
  */
 _myNewPackage.Config.prototype.text
+
+/* typal types/api.xml externs */
+/**
+ * {{ description }}
+ * @typedef {function(!_myNewPackage.Config): !Promise<string>}
+ */
+_myNewPackage.myNewPackage

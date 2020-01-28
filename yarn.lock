@@ -22,12 +22,12 @@
   resolved "https://registry.yarnpkg.com/@zoroaster/mask/-/mask-2.3.0.tgz#57d169417e09e481efafccbffdd93cef919ec5e6"
   integrity sha512-fufal06pS/SYhOKHCmoFQ+PjhQwsCwMr2h0D2xeiVaXstaWHJVEiLg4+BU/KCmOOzLXLKikf81ca4zFXip7ScQ==
 
-alamode@^3.0.0, alamode@^3.2.0, alamode@^3.3.0:
+alamode@^3.0.0, alamode@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/alamode/-/alamode-3.3.0.tgz#5a73ebb8eae847934f747d67c2680698061b7bbe"
   integrity sha512-/Xi0rZ0HAyobAIi8DJQMeFF3kRrr15PGuYRwvxmQaOqSO3WJgXOsmhL6sZQuvD/okZztzujMxMA+21WOD2rYyQ==
 
-argufy@^1.7.1:
+argufy@^1.7.5:
   version "1.7.5"
   resolved "https://registry.yarnpkg.com/argufy/-/argufy-1.7.5.tgz#e0ead64079b746765f08643d3fc0d4629c7468c8"
   integrity sha512-vc/AqYhXqQyDSTVRx2RNIlKNTwSdsVBP3Tp512kOCgzz8IIaHbdebVdi3PDRG1PUXv0oH/KBzdvDlS04fVV9Jg==
@@ -40,10 +40,10 @@ depack@^1.0.1:
     "@depack/nodejs" "^1.1.4"
     "@externs/nodejs" "^1.5.0"
 
-documentary@^1.34.1:
-  version "1.35.8"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.35.8.tgz#17e86eeecdca6daa0c8058484e6ced78ce5e3199"
-  integrity sha512-/V3Qs4oru12RFl0zif4TPmTcJ0whCnaWZxOsblpkzyFx7wZkWK9QTMGMz1C2Qv2aYVswMjV2BKQuE5UBHAsa6Q==
+documentary@^1.35.9:
+  version "1.35.9"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.35.9.tgz#f0003b04c4a54325198e1189f81ba88aad87e21a"
+  integrity sha512-NnZvzx+429RfwgehvpSNvTXFEOR3bnrPW09TZpPxwa2QnPOdRybxoKDrluP6QoGDQslOKXrWkzSXO/lesqPsWw==
   dependencies:
     alamode "^3.3.0"
     preact "8.5.3"
@@ -70,9 +70,9 @@ preact@8.5.3:
   integrity sha512-O3kKP+1YdgqHOFsZF2a9JVdtqD+RPzCQc3rP+Ualf7V6rmRDchZ9MJbiGTT7LuyqFKZqlHSOyO/oMFmI2lVTsw==
 
 typal@^1.24.19:
-  version "1.24.19"
-  resolved "https://registry.yarnpkg.com/typal/-/typal-1.24.19.tgz#b77d62a25cf65bfbb13808d3939a571c8a65a8f4"
-  integrity sha512-LAdurZ+1RxVKXkxGR9qr+CM7b5DfQ+HB7zk1dBd2YVL3mcCS+s0K5k/5plxM3NMPcmjQi12nz2woWxoQp9nnbQ==
+  version "1.26.0"
+  resolved "https://registry.yarnpkg.com/typal/-/typal-1.26.0.tgz#72d0a3cb11795fd29397cdbc1aa7cff14e696406"
+  integrity sha512-zmONxk2RvezXI0AKOa74yw9Ac5OvHNItlhThbcUtmi+MErbyi8uHh7mwf8bG2E1mB6MEJ1FQtwf0NBVPe4TVUg==
 
 usually@^1.2.0:
   version "1.2.0"

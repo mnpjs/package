@@ -1,9 +1,11 @@
 export {}
 
-/* typal types/index.xml namespace */
+/* typal types/api.xml namespace */
 /**
- * @typedef {_myNewPackage.Config} Config `＠record` Options for the program.
- * @typedef {Object} _myNewPackage.Config `＠record` Options for the program.
- * @prop {boolean} [shouldRun=true] A boolean option. Default `true`.
- * @prop {string} [text] A text to return.
+ * @typedef {_myNewPackage.myNewPackage} myNewPackage {{ description }}
+ * @typedef {(config: !_myNewPackage.Config) => string} _myNewPackage.myNewPackage {{ description }}
+ */
+
+/**
+ * @typedef {import('..').Config} _myNewPackage.Config
  */

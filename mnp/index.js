@@ -47,7 +47,7 @@ export default {
     compile: {
       text: 'Build or compile',
       getDefault() { return 'compile' },
-      async afterQuestions({ rm, removeFile, packageJson, updatePackageJson, updateFiles, json, saveJson }, answer, { binary }) {
+      async afterQuestions({ rm, removeFile, packageJson, updatePackageJson, updateFiles, json, saveJson, renameFile }, answer, { binary }) {
         const compile = answer == 'compile'
         const build = answer == 'build'
         const { scripts } = packageJson
@@ -57,6 +57,7 @@ export default {
         if (compile) {
           await rm('build')
           await rm('stdlib')
+          removeFile('src/index-build.js')
           removeFile('src/stdlib.js')
           removeFile('types/index.js')
           delete scripts['test-build']
@@ -77,6 +78,8 @@ export default {
             replacement: 'import(\'..\')',
           }, { file: 'src/index.js' })
         } else if (build) {
+          await rm('src/index.js')
+          renameFile('src/index-build.js', 'src/index.js')
           removeCompile(alamoderc, scripts, packageJson, binary)
           await rm('compile')
           removeFile('src/depack.js')
