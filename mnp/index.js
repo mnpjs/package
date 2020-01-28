@@ -96,8 +96,10 @@ export default {
   },
   async preUpdate({ repo: { owner: { avatar_url } } }, { updateFiles }) {
     await updateFiles({
-      re: /https:\/\/avatars3.githubusercontent.com\/u\/38815725?v=4/,
-      replacement: avatar_url,
+      re: /https:\/\/avatars3\.githubusercontent\.com\/u\/38815725\?v=4/,
+      replacement() {
+        return avatar_url
+      },
     }, { file: '.documentary/index.jsx' })
   },
   async afterInit({ name }, { renameFile, initManager }) {
