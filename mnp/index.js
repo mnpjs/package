@@ -5,7 +5,22 @@ export default {
       confirm: true,
       text: 'With binary',
       async afterQuestions({ rm, removeFile, updateFiles, packageJson, updatePackageJson }, withBinary ) {
-        if (withBinary) return
+        if (withBinary) {
+          await updateFiles({
+            re: /\n?\/\* bin-(start|end) \*\//g,
+            replacement() {
+              return ''
+            },
+          }, { file: 'src/stdlib.js' })
+          return
+        }
+        await updateFiles({
+          re: /\n?\/\* bin-start \*\/[\s\S]+?\/\* bin-end \*\//g,
+          replacement() {
+            this.debug('Removing bin dependencies from stdlib.')
+            return ''
+          },
+        }, { file: 'src/stdlib.js' })
         await Promise.all([
           rm('src/bin'),
           rm('build/bin'),
