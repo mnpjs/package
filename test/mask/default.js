@@ -3,9 +3,13 @@ import Context from '../context'
 import myNewPackage from '../../src'
 
 export default makeTestSuite('test/result/default', {
-  async getResults() {
+  /**
+   * @param {Context} ctx
+   */
+  async getResults({ fixture }) {
+    const text = fixture`test.txt` + `\n${this.input}`
     const res = await myNewPackage({
-      text: this.input,
+      text,
     })
     return res
   },
