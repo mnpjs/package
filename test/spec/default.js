@@ -2,7 +2,7 @@ import { equal, ok } from '@zoroaster/assert'
 import Context from '../context'
 import myNewPackage from '../../src'
 
-/** @type {Object.<string, (c: Context)>} */
+/** @type {TestSuite} */
 const T = {
   context: Context,
   'is a function'() {
@@ -19,5 +19,9 @@ const T = {
     ok(res, text)
   },
 }
+
+/**
+ * @typedef {import('../context').TestSuite} TestSuite
+ */
 
 export default T
