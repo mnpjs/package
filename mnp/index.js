@@ -111,8 +111,8 @@ export default {
       },
     },
   },
-  async preUpdate({ repo: { owner: { avatar_url } }, manager,
-    packageJson, updatePackageJson }, { updateFiles }) {
+  async preUpdate({ repo: { owner: { avatar_url } }, manager }, {
+    updateFiles, packageJson, updatePackageJson }) {
     await updateFiles({
       re: /https:\/\/avatars3\.githubusercontent\.com\/u\/38815725\?v=4/,
       replacement() {
