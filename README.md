@@ -132,7 +132,7 @@ The package can also be used from the CLI.
 <table>
   <tr>
     <td><img src="https://avatars3.githubusercontent.com/u/38815725?v=4&amp;s=100" alt="{{ org }}"></td>
-    <td>© <a href="{{ website }}">{{ trademark }}</a> 2019</td>
+    <td>© <a href="{{ website }}">{{ trademark }}</a> 2020</td>
   </tr>
 </table>
 

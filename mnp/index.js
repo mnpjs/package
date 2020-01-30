@@ -111,13 +111,28 @@ export default {
       },
     },
   },
-  async preUpdate({ repo: { owner: { avatar_url } } }, { updateFiles }) {
+  async preUpdate({ repo: { owner: { avatar_url } }, manager,
+    packageJson, updatePackageJson }, { updateFiles }) {
     await updateFiles({
       re: /https:\/\/avatars3\.githubusercontent\.com\/u\/38815725\?v=4/,
       replacement() {
         return avatar_url
       },
     }, { file: '.documentary/index.jsx' })
+    if (manager == 'npm') {
+      await updateFiles({
+        re: /yarn /,
+        replacement() {
+          return 'npm run'
+        },
+      }, { file: 'package.json' })
+      delete packageJson.devDependencies['yarn-s']
+      packageJson.scripts.d = packageJson.scripts.d.replace('yarn-s', 'npm-s')
+    } else {
+      delete packageJson.devDependencies['@artdeco/npm-s']
+    }
+    packageJson.repository.url = '{{ repo.git_url }}'
+    updatePackageJson(packageJson)
   },
   async afterInit({ name }, { renameFile, initManager }) {
     renameFile('compile/bin/mnp.js', `compile/bin/${name}.js`)

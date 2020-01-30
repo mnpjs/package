@@ -43,8 +43,9 @@
   "externs": "types/externs.js",
   "repository": {
     "type": "git",
-    "url": "{{ repo.git_url }}"
+    "url": "git://github.com/mnpjs/package.git"
   },
+  "typedefs": "typedefs.json",
   "keywords": [],
   "author": "{{ author_name }} <{{ author_email }}>",
   "license": "{{ license_spdx }}",
@@ -53,15 +54,16 @@
   },
   "homepage": "{{ homepage }}",
   "devDependencies": {
-    "alamode": "^3.3.0",
+    "@artdeco/npm-s": "^1.0.0",
+    "alamode": "^3.3.1",
     "argufy": "^1.7.5",
-    "depack": "^1.0.1",
+    "depack": "^1.1.0",
     "documentary": "^1.35.9",
     "erte": "^1.2.0",
     "eslint-config-artdeco": "1.0.1",
-    "indicatrix": "^1.4.0",
+    "indicatrix": "^1.4.1",
     "usually": "^1.2.0",
-    "yarn-s": "1.2.1",
+    "yarn-s": "1.2.2",
     "zoroaster": "^4.1.2"
   }
 }
