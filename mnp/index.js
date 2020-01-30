@@ -121,7 +121,7 @@ export default {
     }, { file: '.documentary/index.jsx' })
     if (manager == 'npm') {
       await updateFiles({
-        re: /yarn /,
+        re: /yarn /g,
         replacement() {
           return 'npm run'
         },
