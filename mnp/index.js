@@ -120,12 +120,6 @@ export default {
       },
     }, { file: '.documentary/index.jsx' })
     if (manager == 'npm') {
-      await updateFiles({
-        re: /yarn /g,
-        replacement() {
-          return 'npm run'
-        },
-      }, { file: 'package.json' })
       delete packageJson.devDependencies['yarn-s']
       packageJson.scripts.d = packageJson.scripts.d.replace('yarn-s', 'npm-s')
     } else {
@@ -133,6 +127,14 @@ export default {
     }
     packageJson.repository.url = '{{ repo.git_url }}'
     updatePackageJson(packageJson)
+    if (manager == 'npm') {
+      await updateFiles({
+        re: /yarn /g,
+        replacement() {
+          return 'npm run '
+        },
+      }, { file: 'package.json' })
+    }
   },
   async afterInit({ name }, { renameFile, initManager }) {
     renameFile('compile/bin/mnp.js', `compile/bin/${name}.js`)
