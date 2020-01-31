@@ -122,6 +122,10 @@ export default {
     if (manager == 'npm') {
       delete packageJson.devDependencies['yarn-s']
       packageJson.scripts.d = packageJson.scripts.d.replace('yarn-s', 'npm-s')
+      packageJson.scripts = {
+        ...packageJson.scripts,
+        alanode: 'alanode',
+      }
     } else {
       delete packageJson.devDependencies['@artdeco/npm-s']
     }
