@@ -6,6 +6,8 @@ import { c } from 'erte'
 import Init from './commands/init'
 import myNewPackage from '../'
 
+/* license-copyright */
+
 if (_help) {
   const usage = usually({
     description: '{{ description }}',

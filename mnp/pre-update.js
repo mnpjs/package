@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'fs'
 
 export default async function preUpdate(
   // settings
-  { repo: { owner: { avatar_url } }, manager, license_spdx, compile },
+  { repo: { owner: { avatar_url } }, manager, license_spdx, compile, binary },
   // api
   { updateFiles, packageJson, updatePackageJson, resolve }) {
   await updateFiles({
@@ -36,11 +36,20 @@ export default async function preUpdate(
   const files = []
   if (compile == 'compile') files.push('src/depack.js')
   else if (compile == 'build') files.push('src/index.js')
+  if (binary) files.push('src/bin/mnp.js')
+
   if (e) {
     await updateFiles({
       re: /\/\* license-copyright \*\/\n/g,
       replacement() {
         return readFileSync(l)
+      },
+    }, { files })
+  } else {
+    await updateFiles({
+      re: /\/\* license-copyright \*\/\n/g,
+      replacement() {
+        return ''
       },
     }, { files })
   }
