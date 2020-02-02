@@ -1,3 +1,5 @@
+import preUpdate from './pre-update'
+
 export default {
   mnpQuestions: ['wiki', 'license', 'homepage', 'keywords'],
   questions: {
@@ -111,35 +113,7 @@ export default {
       },
     },
   },
-  async preUpdate({ repo: { owner: { avatar_url } }, manager }, {
-    updateFiles, packageJson, updatePackageJson }) {
-    await updateFiles({
-      re: /https:\/\/avatars3\.githubusercontent\.com\/u\/38815725\?v=4/,
-      replacement() {
-        return avatar_url
-      },
-    }, { file: '.documentary/index.jsx' })
-    if (manager == 'npm') {
-      delete packageJson.devDependencies['yarn-s']
-      packageJson.scripts.d = packageJson.scripts.d.replace('yarn-s', 'npm-s')
-      packageJson.scripts = {
-        ...packageJson.scripts,
-        alanode: 'alanode',
-      }
-    } else {
-      delete packageJson.devDependencies['@artdeco/npm-s']
-    }
-    packageJson.repository.url = '{{ repo.git_url }}'
-    updatePackageJson(packageJson)
-    if (manager == 'npm') {
-      await updateFiles({
-        re: /yarn /g,
-        replacement() {
-          return 'npm run '
-        },
-      }, { file: 'package.json' })
-    }
-  },
+  preUpdate,
   async afterInit({ name }, { renameFile, initManager }) {
     renameFile('compile/bin/mnp.js', `compile/bin/${name}.js`)
     renameFile('compile/mnp.js', `compile/${name}.js`)

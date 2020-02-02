@@ -1,5 +1,7 @@
 import { c } from 'erte'
 
+/* license-copyright */
+
 /**
  * {{ description }}
  * @param {!_myNewPackage.Config} [config] Options for the program.
