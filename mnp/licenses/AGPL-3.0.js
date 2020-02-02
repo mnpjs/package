@@ -1,6 +1,6 @@
 /*
  * @license
- * myNewPackage: {{ description }}
+ * my-new-package: {{ description }}
  *
  * Copyright (C) {{ year }}  {{ legal_name }}
  *

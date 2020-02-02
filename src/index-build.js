@@ -1,6 +1,6 @@
-import { c } from 'erte'
-
 /* license-copyright */
+
+import { c } from 'erte'
 
 /**
  * {{ description }}

@@ -1,3 +1,5 @@
+/* license-copyright */
+
 import { _help, _init, _output, _version, _input, argsConfig } from './get-args'
 import { reduceUsage } from 'argufy'
 import usually from 'usually'
@@ -5,8 +7,6 @@ import { readFileSync, writeFileSync } from 'fs'
 import { c } from 'erte'
 import Init from './commands/init'
 import myNewPackage from '../'
-
-/* license-copyright */
 
 if (_help) {
   const usage = usually({

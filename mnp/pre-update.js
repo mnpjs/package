@@ -40,14 +40,14 @@ export default async function preUpdate(
 
   if (e) {
     await updateFiles({
-      re: /\/\* license-copyright \*\/\n/g,
+      re: /\/\* license-copyright \*\//g,
       replacement() {
         return readFileSync(l)
       },
     }, { files })
   } else {
     await updateFiles({
-      re: /\/\* license-copyright \*\/\n/g,
+      re: /\/\* license-copyright \*\/\n\n/g,
       replacement() {
         return ''
       },
