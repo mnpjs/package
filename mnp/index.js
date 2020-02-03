@@ -123,7 +123,8 @@ export default {
     await initManager()
   },
   async afterCommit(_, { git }) {
-    await git('tag', '-a', 'v0.0.0-pre', '-m', 'initialise package')
+    const i = 'initialise package'
+    await git('tag', '-a', 'v0.0.0-pre', '-m', process.platform == 'win32' ? `"${i}"` : i)
   },
 }
 
