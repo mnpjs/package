@@ -55,14 +55,14 @@
   "homepage": "{{ homepage }}",
   "devDependencies": {
     "@artdeco/npm-s": "^1.0.1",
-    "alamode": "^3.3.2",
+    "alamode": "^3.3.3",
     "argufy": "^1.7.5",
-    "depack": "^1.1.0",
-    "documentary": "^1.35.10",
+    "depack": "^1.1.1",
+    "documentary": "^1.35.12",
     "erte": "^1.2.0",
     "eslint-config-artdeco": "1.0.1",
     "indicatrix": "^1.4.1",
-    "typal": "^1.26.1",
+    "typal": "^1.26.2",
     "usually": "^1.2.0",
     "yarn-s": "1.2.3",
     "zoroaster": "^4.2.0"
