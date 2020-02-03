@@ -62,6 +62,7 @@
     "erte": "^1.2.0",
     "eslint-config-artdeco": "1.0.1",
     "indicatrix": "^1.4.1",
+    "typal": "^1.26.1",
     "usually": "^1.2.0",
     "yarn-s": "1.2.3",
     "zoroaster": "^4.1.2"
