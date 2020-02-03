@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'fs'
 
 export default async function preUpdate(
   // settings
-  { repo: { owner: { avatar_url } }, manager, license_spdx, compile, binary },
+  { repo: { owner: { avatar_url } }, manager, license, compile, binary },
   // api
   { updateFiles, packageJson, updatePackageJson, resolve }) {
   await updateFiles({
@@ -31,7 +31,26 @@ export default async function preUpdate(
       },
     }, { file: 'package.json' })
   }
-  const l = resolve(`mnp/licenses/${license_spdx}.js`)
+  await License({ license, binary, compile },
+    { resolve, updateFiles })
+  if (process.platform == 'win32') {
+    await updateFiles({
+      re: /\.bin\/zoroaster/,
+      replacement() {
+        return 'zoroaster/depack/bin/zoroaster.js'
+      },
+    }, { file: '.vscode/launch.json' })
+    await updateFiles({
+      re: /\.bin\/alanode/,
+      replacement() {
+        return 'alamode/build/alanode.js'
+      },
+    }, { file: '.vscode/launch.json' })
+  }
+}
+
+const License = async ({ license, binary, compile }, { resolve, updateFiles }) => {
+  const l = resolve(`mnp/licenses/${license.spdx}.js`)
   const e = existsSync(l)
   const files = []
   if (compile == 'compile') files.push('src/depack.js')
