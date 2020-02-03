@@ -2,6 +2,7 @@
 test
 
 /* expected */
-test/fixture/test.txt
-test
+test:
+a test file
+
 /**/

@@ -1,5 +1,6 @@
 import { join } from 'path'
 import { debuglog } from 'util'
+import { readFileSync } from 'fs'
 
 const LOG = debuglog('my-new-package')
 
@@ -18,13 +19,24 @@ export default class Context {
   }
   /**
    * A tagged template that returns the relative path to the fixture.
-   * @param {string} file
    * @example
    * fixture`input.txt` // -> test/fixture/input.txt
    */
-  fixture(file) {
-    const f = file.raw[0]
+  fixture(strings, ...args) {
+    const f = strings.raw.reduce((acc, s, i) => {
+      acc.push(s)
+      const a = args[i]
+      if (a) acc.push(a)
+      return acc
+    }, []).join('')
     return join('test/fixture', f)
+  }
+  /**
+   * Read the file as a string.
+   * @param {string} path
+   */
+  readFile(path) {
+    return readFileSync(path, 'utf8')
   }
   async _destroy() {
     LOG('destroy context')
