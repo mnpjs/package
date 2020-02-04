@@ -11,7 +11,7 @@ async function myNewPackage(config = {}) {
     shouldRun = true,
     text = '',
   } = config
-  if (!shouldRun) return
+  if (!shouldRun) return ''
   console.log('my-new-package called with %s', c(text, 'yellow'))
   return text
 }
