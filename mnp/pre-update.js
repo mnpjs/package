@@ -24,12 +24,17 @@ export default async function preUpdate(
   packageJson.repository.url = '{{ repo.git_url }}'
   updatePackageJson(packageJson)
   if (manager == 'npm') {
-    await updateFiles({
-      re: /yarn /g,
+    await updateFiles([{
+      re: /yarn t /g,
       replacement() {
-        return 'npm run '
+        return 'npm run t '
       },
-    }, { file: 'package.json' })
+    }, {
+      re: /yarn test /g,
+      replacement() {
+        return 'npm test -- -- '
+      },
+    }], { file: 'package.json' })
   }
   await License({ license, binary, compile },
     { resolve, updateFiles })

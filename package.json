@@ -13,12 +13,12 @@
     "compile": "depack src/bin/mnp -o compile/bin/mnp.js -a -c -S --externs types/externs.js",
     "lib": "depack src/depack.js -o compile/mnp.js -a -c --source_map_include_content",
     "stdlib": "depack src/stdlib.js -o stdlib/index.js -a -c -p --source_map_include_content",
-    "test-build": "ALAMODE_ENV=test-build yarn test",
-    "test-compile": "ALAMODE_ENV=test-compile yarn test",
+    "test-build": "yarn test -e test-build",
+    "test-compile": "yarn test -e test-compile",
     "lint": "eslint .",
     "doc": "doc -o README.md -n _myNewPackage -a -d",
     "wiki": "doc wiki -W wiki.git -n _myNewPackage -a -d",
-    "b": "ALAMODE_ENV=build alamode src -o build -i stdlib.js -s",
+    "b": "alamode src -o build -i stdlib.js -s --env build",
     "d": "yarn-s template d1 externs",
     "d1": "typal compile/index.js types/index.js -u -t types/index.xml",
     "d2": "typal src -u -t types/index.xml",
@@ -55,7 +55,7 @@
   "homepage": "{{ homepage }}",
   "devDependencies": {
     "@artdeco/npm-s": "^1.0.1",
-    "alamode": "^3.3.3",
+    "alamode": "^3.4.0",
     "argufy": "^1.7.5",
     "depack": "^1.1.1",
     "documentary": "^1.35.12",
@@ -65,6 +65,6 @@
     "typal": "^1.26.2",
     "usually": "^1.2.0",
     "yarn-s": "1.2.3",
-    "zoroaster": "^4.2.0"
+    "zoroaster": "^4.3.0"
   }
 }
