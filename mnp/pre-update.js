@@ -59,7 +59,7 @@ const License = async ({ license, binary, compile }, { resolve, updateFiles }) =
   const e = existsSync(l)
   const files = []
   if (compile == 'compile') files.push('src/depack.js')
-  else if (compile == 'build') files.push('src/index.js')
+  else files.push('src/index.js')
   if (binary) files.push('src/bin/mnp.js')
 
   if (e) {
