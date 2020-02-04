@@ -23,9 +23,9 @@
   integrity sha512-5C0LDzW8DkiSSCLyYO9ux3R5ru65yEn/GtxH1wh7ukRhLAZ/Svx4+A81YvciXcn35B2VmvCqyiTrhNdxdgusSw==
 
 "@zoroaster/mask@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@zoroaster/mask/-/mask-2.4.0.tgz#9c5400928f6bb88aeef0971325aa6558a87ce435"
-  integrity sha512-vJ71/qOb7H3YMa0hF7hAapbB/Vk1BlXKRkIsNSuCLBK4fe2wHsj06eVFNCjRz5KpgAyvAXLHrdYAGbGdwzwacw==
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@zoroaster/mask/-/mask-2.5.0.tgz#de128987743d71376485ba9b34977d49e18cde92"
+  integrity sha512-GuEHgVneq0MkSHBcF7YgTAuk42/pWJnvMPvbOsUXmq3m2FcSe1v788Bfw896RzZ7p6LWq11xnq48YOkhcy5jLA==
 
 alamode@^3.3.2, alamode@^3.3.3:
   version "3.3.3"
