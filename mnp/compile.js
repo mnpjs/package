@@ -1,12 +1,12 @@
 export default {
   text: 'Build or compile',
   getDefault() { return 'compile' },
-  async afterQuestions({ rm, removeFile, packageJson, updatePackageJson, updateFiles, json, saveJson, renameFile }, answer, { binary }) {
+  async afterQuestions({ rm, removeFile, packageJson, updatePackageJson, updateFiles, json, saveJson, renameFile, warn }, answer, { binary }) {
     const compile = answer == 'compile'
     const build = answer != 'compile'
     if (answer != 'compile' && answer != 'build') {
-      this.warn('Only valid options are "compile" and "build". You answered: "%s"', answer)
-      this.warn('Choosing "build".')
+      warn('Only valid options are "compile" and "build". You answered: "%s"', answer)
+      warn('Choosing "build".')
     }
     const { scripts } = packageJson
     delete scripts.d2 // manually run on the build
