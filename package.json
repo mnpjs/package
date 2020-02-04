@@ -55,7 +55,7 @@
   "homepage": "{{ homepage }}",
   "devDependencies": {
     "@artdeco/npm-s": "^1.0.1",
-    "alamode": "^3.4.0",
+    "alamode": "^3.4.1",
     "argufy": "^1.7.5",
     "depack": "^1.1.1",
     "documentary": "^1.35.12",
