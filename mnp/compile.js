@@ -26,8 +26,10 @@ export default {
         return !['build', 'stdlib'].includes(a)
       })
       await updateFiles({
-        re: /if (process.env.ALAMODE_ENV == 'test-build') {[\s\S]+?} else /,
-        replacement: '',
+        re: /if (process\.env\.ALAMODE_ENV == 'test-build') {[\s\S]+?} else \r?\n/,
+        replacement() {
+          return ''
+        },
       }, { file: 'test/context/index.js' })
       // import types from compile/index.js
       // await updateFiles({
@@ -44,8 +46,10 @@ export default {
       removeFile('src/depack.js')
       removeFile('build/depack.js')
       await updateFiles({
-        re: / else if (process.env.ALAMODE_ENV == 'test-compile') {[\s\S]+?}/,
-        replacement: '',
+        re: /\r?\n else if (process\.env\.ALAMODE_ENV == 'test-compile') {[\s\S]+?}/,
+        replacement() {
+          return ''
+        },
       }, { file: 'test/context/index.js' })
     }
     packageJson.scripts = scripts
