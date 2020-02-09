@@ -26,7 +26,7 @@ export default {
         return !['build', 'stdlib'].includes(a)
       })
       await updateFiles({
-        re: /if (process\.env\.ALAMODE_ENV == 'test-build') {[\s\S]+?} else \r?\n/,
+        re: /if \(process\.env\.ALAMODE_ENV == 'test-build'\) {[\s\S]+?} else /,
         replacement() {
           return ''
         },
@@ -46,7 +46,7 @@ export default {
       removeFile('src/depack.js')
       removeFile('build/depack.js')
       await updateFiles({
-        re: /\r?\n else if (process\.env\.ALAMODE_ENV == 'test-compile') {[\s\S]+?}/,
+        re: / else if \(process\.env\.ALAMODE_ENV == 'test-compile'\) {[\s\S]+?}/,
         replacement() {
           return ''
         },
