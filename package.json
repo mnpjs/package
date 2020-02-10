@@ -37,7 +37,6 @@
     "stdlib",
     "types/externs.js",
     "types/index.js",
-    "src/bin/index.js",
     "typedefs.json"
   ],
   "externs": "types/externs.js",

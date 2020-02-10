@@ -23,7 +23,7 @@ export default {
       delete alamoderc.env['test-build']
       delete alamoderc.env['build'] // remove stdlib
       packageJson.files = packageJson.files.filter((a) => {
-        return !['build', 'stdlib'].includes(a)
+        return !['build', 'stdlib', 'types/index.js'].includes(a)
       })
       await updateFiles({
         re: /if \(process\.env\.ALAMODE_ENV == 'test-build'\) {[\s\S]+?} else /,
