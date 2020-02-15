@@ -46,6 +46,7 @@ export default class Context {
   }
 }
 
+/* bin-start */
 let BIN = 'src/BIN'
 if (process.env.ALAMODE_ENV == 'test-build') {
   console.log('Testing build bin...')
@@ -54,6 +55,7 @@ if (process.env.ALAMODE_ENV == 'test-build') {
   console.log('Testing compile bin...')
   BIN = 'compile/bin/mnp'
 }
+/* bin-end */
 
 /** @typedef {Object<string, Test & TestSuite4>} TestSuite */
 /** @typedef {Object<string, Test & TestSuite3>} TestSuite4 */
