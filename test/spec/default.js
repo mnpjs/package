@@ -1,4 +1,4 @@
-import { equal, ok } from '@zoroaster/assert'
+import { equal } from '@zoroaster/assert'
 import Context from '../context'
 import myNewPackage from '../../src'
 
@@ -16,7 +16,7 @@ const T = {
     const res = await myNewPackage({
       text,
     })
-    ok(res, text)
+    equal(res, text)
   },
 }
 
