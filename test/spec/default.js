@@ -11,8 +11,9 @@ const T = {
   async 'calls package without error'() {
     await myNewPackage()
   },
-  async 'gets a link to the fixture'({ fixture }) {
-    const text = fixture`text.txt`
+  async 'gets a link to the fixture'({ fixture, readFile }) {
+    const path = fixture`test.txt`
+    const text = readFile(path)
     const res = await myNewPackage({
       text,
     })
