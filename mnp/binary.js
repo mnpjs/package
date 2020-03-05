@@ -4,7 +4,7 @@
 const binary = {
   confirm: true,
   text: 'With binary',
-  async afterQuestions({ rm, removeFile, updateFiles, packageJson, updatePackageJson }, withBinary, keepBlocks, removeBlocks ) {
+  async afterQuestions({ rm, removeFile, updateFiles, packageJson, updatePackageJson, keepBlocks, removeBlocks }, withBinary) {
     if (withBinary) {
       await keepBlocks('bin', [
         'src/stdlib.js', 'test/context/index.js',
