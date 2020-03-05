@@ -1,6 +1,9 @@
 import { existsSync, readFileSync } from 'fs'
 
-export default async function preUpdate(
+/**
+ * @type {import('mnp').PreUpdate}
+ */
+async function preUpdate(
   // settings
   { repo: { owner: { avatar_url } }, manager, license, compile, binary },
   // api
@@ -10,7 +13,7 @@ export default async function preUpdate(
     replacement() {
       return avatar_url
     },
-  }, { file: '.documentary/index.jsx' })
+  }, '.documentary/index.jsx')
   if (manager == 'npm') {
     delete packageJson.devDependencies['yarn-s']
     packageJson.scripts.d = packageJson.scripts.d.replace('yarn-s', 'npm-s')
@@ -34,24 +37,10 @@ export default async function preUpdate(
       replacement() {
         return 'npm test -- -- '
       },
-    }], { file: 'package.json' })
+    }], 'package.json')
   }
   await License({ license, binary, compile },
     { resolve, updateFiles })
-  if (process.platform == 'win32') {
-    await updateFiles({
-      re: /\.bin\/zoroaster/,
-      replacement() {
-        return 'zoroaster/depack/bin/zoroaster.js'
-      },
-    }, { file: '.vscode/launch.json' })
-    await updateFiles({
-      re: /\.bin\/alanode/,
-      replacement() {
-        return 'alamode/build/alanode.js'
-      },
-    }, { file: '.vscode/launch.json' })
-  }
 }
 
 const License = async ({ license, binary, compile }, { resolve, updateFiles }) => {
@@ -68,13 +57,15 @@ const License = async ({ license, binary, compile }, { resolve, updateFiles }) =
       replacement() {
         return readFileSync(l)
       },
-    }, { files })
+    }, files)
   } else {
     await updateFiles({
       re: /\/\* license-copyright \*\/\n\n/g,
       replacement() {
         return ''
       },
-    }, { files })
+    }, files)
   }
 }
+
+export default preUpdate

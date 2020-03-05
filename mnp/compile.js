@@ -1,8 +1,9 @@
-export default {
+/** @type {import('mnp').Question} */
+const compile = {
   text: 'Build or compile',
   getDefault() { return 'compile' },
   async afterQuestions({ rm, removeFile, packageJson, updatePackageJson, updateFiles, json, saveJson, renameFile, warn }, answer, { binary }) {
-    const compile = answer == 'compile'
+    const Compile = answer == 'compile'
     const build = answer != 'compile'
     if (!['compile', 'build'].includes(answer)) {
       warn('Only valid options are "compile" and "build". You answered: "%s"', answer)
@@ -12,7 +13,7 @@ export default {
     delete scripts.d2 // manually run on the build
     // this should be reconsiled with @methodType regex in Typal on source
     const alamoderc = json('.alamoderc.json')
-    if (compile) {
+    if (Compile) {
       await rm('build')
       await rm('stdlib')
       removeFile('src/index-build.js')
@@ -30,7 +31,7 @@ export default {
         replacement() {
           return ''
         },
-      }, { file: 'test/context/index.js' })
+      }, 'test/context/index.js')
       // import types from compile/index.js
       // await updateFiles({
       //   re: /import\('\.\.\/types'\)/g,
@@ -50,7 +51,7 @@ export default {
         replacement() {
           return ''
         },
-      }, { file: 'test/context/index.js' })
+      }, 'test/context/index.js')
     }
     packageJson.scripts = scripts
     updatePackageJson(packageJson)
@@ -90,3 +91,5 @@ const removeCompile = async (alamoderc, scripts, packageJson, bin) => {
   })
   if (Object.keys(dependencies).length) Object.assign(packageJson, { dependencies })
 }
+
+export default compile

@@ -21,4 +21,5 @@ export default {
     const i = 'initialise package'
     await git('tag', '-a', 'v0.0.0-pre', '-m', process.platform == 'win32' ? `"${i}"` : i)
   },
+  api: '1.2.0',
 }

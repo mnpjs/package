@@ -1,23 +1,17 @@
-export default {
+/**
+ * @type {import('mnp').Question}
+ */
+const binary = {
   confirm: true,
   text: 'With binary',
-  async afterQuestions({ rm, removeFile, updateFiles, packageJson, updatePackageJson }, withBinary ) {
+  async afterQuestions({ rm, removeFile, updateFiles, packageJson, updatePackageJson }, withBinary, keepBlocks, removeBlocks ) {
     if (withBinary) {
-      await updateFiles({
-        re: /(\r?\n)?\/\* bin-(start|end) \*\//g,
-        replacement() {
-          return ''
-        },
-      }, { files: ['src/stdlib.js', 'test/context/index.js'] })
+      await keepBlocks('bin', [
+        'src/stdlib.js', 'test/context/index.js',
+      ])
       return
     }
-    await updateFiles({
-      re: /(\r?\n)?\/\* bin-start \*\/[\s\S]+?\/\* bin-end \*\//g,
-      replacement() {
-        this.debug('Removing bin dependencies from stdlib.')
-        return ''
-      },
-    }, { file: 'src/stdlib.js' })
+    await removeBlocks('bin', 'src/stdlib.js')
     await Promise.all([
       rm('src/bin'),
       rm('build/bin'),
@@ -30,7 +24,7 @@ export default {
     await updateFiles({
       re: /## CLI[\s\S]+?##/,
       replacement: '##',
-    }, { file: 'README.md' })
+    }, 'README.md')
     const { devDependencies } = packageJson
     delete devDependencies.indicatrix
     delete devDependencies.usually
@@ -46,15 +40,11 @@ export default {
     })
     updatePackageJson(packageJson)
 
-    await updateFiles([{
-      re: /(\r?\n)?\/\* bin-start \*\/[\s\S]+?\/\* bin-end \*\//g,
-      replacement() {
-        this.debug('Removing bin from context.')
-        return ''
-      },
-    }, {
+    await removeBlocks('bin', 'test/context/index.js')
+    await updateFiles({
       re: /\s+static get BIN\(\) {[\s\S]+?}/,
       replacement: '',
-    }], { file: 'test/context/index.js' })
+    }, 'test/context/index.js')
   },
 }
+export default binary
