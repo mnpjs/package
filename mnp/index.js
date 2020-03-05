@@ -9,12 +9,19 @@ export default {
     compile,
   },
   preUpdate,
-  async afterInit({ name }, { renameFile, initManager }) {
+  /**
+   * @param {Object} settings
+   * @param {import('mnp').API} api
+   */
+  async afterInit({ name }, api) {
+    const { renameFile, initManager, packageJson, updatePackageJson } = api
     renameFile('compile/bin/mnp.js', `compile/bin/${name}.js`)
     renameFile('compile/mnp.js', `compile/${name}.js`)
     renameFile('compile/mnp.js.map', `compile/${name}.js.map`)
     renameFile('src/bin/mnp.js', `src/bin/${name}.js`)
     renameFile('build/bin/mnp.js', `build/bin/${name}.js`)
+    delete packageJson.devDependencies.mnp
+    updatePackageJson(packageJson)
     await initManager()
   },
   async afterCommit(_, { git }) {

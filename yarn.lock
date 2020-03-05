@@ -17,40 +17,50 @@
   resolved "https://registry.yarnpkg.com/@externs/nodejs/-/nodejs-1.5.0.tgz#88ff9e7a03c53d19101ee49768e598ff0f39c9ad"
   integrity sha512-2J+FRDjGfKKldTQ5YqLmhQ04/sA9swTQ6OTtPzo4xhg41u1+eiufciXiqW6u3UXEcmm413a27NakgnLbzfp0wQ==
 
+"@mnpjs/licenses@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@mnpjs/licenses/-/licenses-1.0.0.tgz#f154427072c7673706a910b253e2eaeee13be7a5"
+  integrity sha512-Xp2SUndtz97AJ51nZpAfsA/HG5TZ7T770d2POaGUnXMrF9VgyyfziLLcG9rqquOgjaLKYda0anWWZdYKm2SCwg==
+
+"@rqt/github@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@rqt/github/-/github-1.3.1.tgz#75070036d3ed0dd7d9e39b753c4255cae5a1190a"
+  integrity sha512-R5Pq6Xkhi4zbtHDY3Vx/ea9UuaShYxaDIgHEZputDTXcpFzBRCQIebMcYlpcZgQdtGu9O8tzwmBpKXC9UAxd5Q==
+
 "@zoroaster/assert@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@zoroaster/assert/-/assert-1.0.2.tgz#8ffe2ebb10c81d570d4965080f942af688321a1f"
   integrity sha512-5C0LDzW8DkiSSCLyYO9ux3R5ru65yEn/GtxH1wh7ukRhLAZ/Svx4+A81YvciXcn35B2VmvCqyiTrhNdxdgusSw==
 
 "@zoroaster/mask@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@zoroaster/mask/-/mask-2.5.0.tgz#de128987743d71376485ba9b34977d49e18cde92"
-  integrity sha512-GuEHgVneq0MkSHBcF7YgTAuk42/pWJnvMPvbOsUXmq3m2FcSe1v788Bfw896RzZ7p6LWq11xnq48YOkhcy5jLA==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@zoroaster/mask/-/mask-2.6.1.tgz#bbb2c2a43e126e1fcb5de0a0c37192f1f7cc426e"
+  integrity sha512-KTHuxgzt8cQCs53H/EEWc3MaPVNyZXrcTYGLY7soiIBJiAsTpBJezCEsWn14Qhrf0UTVGI6EDE0SYQS9hfSjVg==
 
-alamode@^3.3.3, alamode@^3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/alamode/-/alamode-3.4.1.tgz#69067860e42c366a539d5461a1657400fd8a0a80"
-  integrity sha512-pQl2V/OwPbXGCgFnCZ1SEHiD2KK2L7Sj0DfX3nVKMpyDv7hBRsZMDz87l/rKtDI6IUBJ0Hjmbcw28jivm4jCTg==
+alamode@^3.3.3, alamode@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/alamode/-/alamode-3.5.2.tgz#0d6fd9a4bbfaf3ecc488d636264c480a825e9bd4"
+  integrity sha512-lKEFyLAYj6I6WURR7YYaclGpQNPwCoPYkbYZSl5vka9n15cfZlSbPkrzivB6F6IXEkAtt7jGAl60V3qyPTEwdQ==
 
 argufy@^1.7.5:
   version "1.7.5"
   resolved "https://registry.yarnpkg.com/argufy/-/argufy-1.7.5.tgz#e0ead64079b746765f08643d3fc0d4629c7468c8"
   integrity sha512-vc/AqYhXqQyDSTVRx2RNIlKNTwSdsVBP3Tp512kOCgzz8IIaHbdebVdi3PDRG1PUXv0oH/KBzdvDlS04fVV9Jg==
 
-depack@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/depack/-/depack-1.1.1.tgz#92773b5637b923f7734a7e2309d9f05d10abc655"
-  integrity sha512-/sOJfu26agc2KFzqCpvwpEmbVlbOUXJ7oSWcL/fLrw3IybrF5F8DvaMPrikZ0+HdV2nFW2TFmN0WJAEYCExNAQ==
+depack@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/depack/-/depack-1.1.2.tgz#7b19148334afa5e267ba0bf6998df08f8ba16744"
+  integrity sha512-OeL0S/ac8FvxDkx3d41yezRR0DGjjtcU/YCw/PVpxkOHAHJEgLGx+WZAdfNt2f5WGiS+Psh8xBJrOyQwalPRbg==
   dependencies:
     "@depack/nodejs" "^1.1.4"
     "@externs/nodejs" "^1.5.0"
 
-documentary@^1.35.13:
-  version "1.35.13"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.35.13.tgz#ff3db9b622bd8f903dd9824fb087f3db5d2d7c15"
-  integrity sha512-mcrEHv4hS2kq174N1dVHT7cJOS4Qz39XCBW/9textUh53eL6pAUumMDf4FpuhEFrbHoGumvr4ty7Y5INO2onWA==
+documentary@^1.37.1:
+  version "1.37.1"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.37.1.tgz#8ba6cb8094d0da4d5d70ffab3e1e9d4066d0a592"
+  integrity sha512-UfmvSwHtWKe7I9NKPpvylLQNEvwUXGS/nKSfNJr1BYcNZRJ78xoNCcLhfLHSwZ3pdNTffDOSmLwfl/4nsTbYRA==
   dependencies:
-    alamode "^3.4.1"
+    alamode "^3.5.2"
     preact "8.5.3"
     typal "^1.26.2"
 
@@ -68,6 +78,15 @@ indicatrix@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/indicatrix/-/indicatrix-1.4.1.tgz#f1359c96eb5a0aeb278e860ca98e645f92b06f07"
   integrity sha512-l/MrxZip0Zrf5HrnLTrV+6CxTfQBLp+8uAc1Pwcte5cMl9vMMupEaJziJujXKmXIKb0qk9pAclcpf+sTJJgTqQ==
+
+mnp@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/mnp/-/mnp-1.2.1.tgz#4ba77b019551944272354d52d22cf9e1fece569a"
+  integrity sha512-CctfTh3eg9binZavoWxKNr8RSnItE4tx59z1zNl/eEcC5L/Mu5ihcKM/GHXBcO0s+n2GOzXh+tEQFEQfgo76Hg==
+  dependencies:
+    "@mnpjs/licenses" "^1.0.0"
+    "@rqt/github" "^1.3.1"
+    alamode "^3.5.2"
 
 preact@8.5.3:
   version "8.5.3"
