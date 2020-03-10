@@ -14,6 +14,9 @@ async function preUpdate(
       return avatar_url
     },
   }, '.documentary/index.jsx')
+
+  delete packageJson.devDependencies.mnp
+
   if (manager == 'npm') {
     delete packageJson.devDependencies['yarn-s']
     packageJson.scripts.d = packageJson.scripts.d.replace('yarn-s', 'npm-s')
